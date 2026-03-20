@@ -1,31 +1,81 @@
-
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>InPay - Zambia Payment Rail</title>
 <style>
-body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;text-align:center;padding:40px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
-h1{font-size:52px;color:#00d9a3;margin-bottom:12px}
-p{color:#5a6a85;margin-bottom:24px;max-width:480px;line-height:1.7}
-.providers{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
-.prov{padding:10px 20px;background:#0f1520;border:1px solid #1a2235;border-radius:50px;font-size:13px;font-weight:700}
-.btn{background:#00d9a3;color:#060910;padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:700;margin:6px;display:inline-block}
-.footer{margin-top:48px;font-size:12px;color:#5a6a85}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;text-align:center;padding:24px;min-height:100vh}
+h1{font-size:48px;color:#00d9a3;margin-bottom:8px;margin-top:40px}
+h2{font-size:24px;color:#1a3a2a;margin:40px 0 16px}
+.tag{background:rgba(0,217,163,.1);border:1px solid rgba(0,217,163,.2);color:#00d9a3;padding:6px 16px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:16px;margin-top:40px}
+p{color:#5a6a85;max-width:520px;line-height:1.7;margin:0 auto 24px}
+.providers{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:32px}
+.prov{padding:10px 18px;background:#0f1520;border:1px solid #1a2235;border-radius:50px;font-size:13px;font-weight:700}
+.btn{background:#00d9a3;color:#060910;padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:700;margin:6px;display:inline-block;font-size:15px}
+.btn2{background:transparent;color:#00d9a3;border:1px solid rgba(0,217,163,.3)}
+.stats{display:flex;gap:32px;margin:40px auto;flex-wrap:wrap;justify-content:center;max-width:600px}
+.stat .n{font-size:28px;font-weight:700;color:#e8edf5}
+.stat .l{font-size:12px;color:#5a6a85;margin-top:4px}
+.divider{height:1px;background:#1a2235;margin:40px auto;max-width:600px}
+.bills-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:32px;max-width:640px;margin-left:auto;margin-right:auto}
+.bill{padding:12px 18px;background:#0f1520;border:1px solid #1a2235;border-radius:10px;font-size:13px;text-align:left;min-width:140px}
+.bill .icon{font-size:20px;margin-bottom:6px}
+.bill .name{font-weight:700;color:#e8edf5;font-size:13px}
+.bill .desc{color:#5a6a85;font-size:11px;margin-top:2px}
+.coming{display:inline-block;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:#f59e0b;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin-left:8px}
+.footer{margin-top:60px;padding-top:24px;border-top:1px solid #1a2235;font-size:12px;color:#5a6a85;padding-bottom:40px}
 </style>
 </head>
 <body>
+
+<div class="tag">Now live in Zambia</div>
 <h1>InPay</h1>
-<p>One QR Code. All Four Networks. Zero Friction.</p>
-<p>Accept MTN, Airtel, Zamtel and SpeedPay through a single API.</p>
+<p>One QR Code. All Four Networks. Zero Friction. Accept MTN, Airtel, Zamtel and SpeedPay through a single API.</p>
+
 <div class="providers">
 <div class="prov" style="color:#ffcb00">MTN Mobile Money</div>
 <div class="prov" style="color:#ff6b6b">Airtel Money</div>
 <div class="prov" style="color:#00d4ff">Zamtel Kwacha</div>
 <div class="prov" style="color:#a78bfa">SpeedPay / Zanaco</div>
 </div>
-<a href="/signup.html" class="btn">Get Started Free</a>
-<div class="footer">2025 InPay Limited · Lusaka, Zambia</div>
-</body>
-</html>
 
+<a href="/signup.html" class="btn">Get Started Free</a>
+<a href="/docs.html" class="btn btn2">API Docs</a>
+
+<div class="stats">
+<div class="stat"><div class="n">10M+</div><div class="l">Mobile money accounts</div></div>
+<div class="stat"><div class="n">4</div><div class="l">Networks unified</div></div>
+<div class="stat"><div class="n">99.9%</div><div class="l">Uptime SLA</div></div>
+<div class="stat"><div class="n">&lt;3s</div><div class="l">Payment confirmation</div></div>
+</div>
+
+<div class="divider"></div>
+
+<div class="tag">Coming Soon</div>
+<h2>InPay Bills</h2>
+<p>Pay every bill in Zambia. ZESCO, water, DSTV, school fees, council rates and more — all in one place, using any mobile money.</p>
+
+<div class="bills-grid">
+<div class="bill"><div class="icon">⚡</div><div class="name">ZESCO</div><div class="desc">Electricity tokens and postpaid</div></div>
+<div class="bill"><div class="icon">💧</div><div class="name">Water</div><div class="desc">LWSC and all utilities</div></div>
+<div class="bill"><div class="icon">📺</div><div class="name">DStv / GoTV</div><div class="desc">TV subscriptions</div></div>
+<div class="bill"><div class="icon">🏫</div><div class="name">School Fees</div><div class="desc">Any school, any amount</div></div>
+<div class="bill"><div class="icon">📡</div><div class="name">Airtime</div><div class="desc">MTN, Airtel, Zamtel</div></div>
+<div class="bill"><div class="icon">🏛️</div><div class="name">ZRA / LCC</div><div class="desc">Taxes and council rates</div></div>
+</div>
+
+<a href="/signup.html" class="btn">Join the Waitlist</a>
+
+<div class="divider"></div>
+
+<div class="footer">
+2025 InPay Limited · Lusaka, Zambia · BOZ PSP License Pending<br>
+aaronmtamiraphiri1@gmail.com · +260 974 558 313
+</div>
+
+</body>
+</html
+
+  
