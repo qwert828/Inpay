@@ -66,8 +66,6 @@ var pr=document.getElementById('pr').value;
 var bt=document.getElementById('bt').value;
 if(!b||!e||!p||!pr||!bt){alert('Please fill all fields');return;}
 var k='inpay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
-document.getElementById('k').textContent=k;
-document.getElementById('frm').style.display='none';
-document.getElementById('ok').style.display='block';
+document.getElementById('k').textContent=k;window.location.href='/dashboard.html?name='+encodeURIComponent(b)+'&key='+k;
 }
 </script>
