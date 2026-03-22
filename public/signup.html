@@ -55,7 +55,8 @@ select option{background:#0f1520}
 </div>
 </div>
 <script>
-function go(){
+function go(){if(!document.getElementById('human').checked){alert('Please confirm you are not a robot');return;}
+              
 var b=document.getElementById('bn').value.trim();
 var e=document.getElementById('em').value.trim();
 var p=document.getElementById('ph').value.trim();
