@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>InPay Send</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.card{background:#0f1520;border:1px solid #1a2235;border-radius:16px;padding:32px;width:100%;max-width:380px}
+.logo{font-size:20px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:4px}
+.sub{color:#5a6a85;font-size:12px;text-align:center;margin-bottom:8px}
+.back{display:block;color:#5a6a85;text-decoration:none;font-size:12px;margin-bottom:20px;text-align:center}
+h2{font-size:20px;font-weight:700;margin-bottom:24px;text-align:center}
+.field{margin-bottom:16px}
+.label{font-size:12px;color:#5a6a85;text-transform:uppercase;margin-bottom:6px;font-weight:600;display:block}
+input,select{width:100%;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px 14px;color:#e8edf5;font-size:14px;outline:none;font-family:Arial}
+input:focus,select:focus{border-color:#00d9a3}
+input::placeholder{color:#5a6a85}
+select option{background:#0f1520}
+.amount-input{font-size:28px;font-weight:700;text-align:center}
+.networks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.netbtn{padding:10px;background:#060910;border:2px solid #1a2235;border-radius:8px;cursor:pointer;font-family:Arial;color:#e8edf5;text-align:center;font-size:12px;font-weight:600}
+.netbtn.selected{border-color:#00d9a3;background:rgba(0,217,163,.05);color:#00d9a3}
+.ndot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
+.summary{background:#060910;border-radius:8px;padding:12px;margin-bottom:20px}
+.srow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(26,34,53,.5);font-size:13px}
+.srow:last-child{border-bottom:none}
+.slabel{color:#5a6a85}
+.sval{font-weight:600}
+.btn{width:100%;background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:Arial}
+.btn:disabled{background:#1a2235;color:#5a6a85;cursor:not-allowed}
+.hidden{display:none}
+.spinner{width:48px;height:48px;border:3px solid rgba(0,217,163,.2);border-top-color:#00d9a3;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.success-icon{font-size:56px;text-align:center;margin-bottom:12px}
+.success-title{font-size:20px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:8px}
+.success-amount{font-size:32px;font-weight:700;text-align:center;margin-bottom:4px}
+.success-ref{font-size:11px;color:#5a6a85;text-align:center;font-family:monospace;margin-bottom:20px}
+.back-btn{width:100%;background:transparent;color:#00d9a3;border:1px solid rgba(0,217,163,.3);border-radius:8px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:Arial}
+.fee-note{font-size:11px;color:#5a6a85;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="logo">InPay Send</div>
+<div class="sub">Send money to anyone in Zambia</div>
+<a href="/" class="back">← Back to InPay</a>
+
+<div id="send-screen">
+<h2>Send Money</h2>
+
+<div class="field">
+<span class="label">Amount (ZMW)</span>
+<input class="amount-input" type="number" id="amount" placeholder="0.00" min="1" oninput="update()">
+</div>
+
+<div class="field">
+<span class="label">Send From — Your Network</span>
+<div class="networks">
+<button class="netbtn" id="f-mtn" onclick="fromNet('mtn')"><span class="ndot" style="background:#ffcb00"></span>MTN</button>
+<button class="netbtn" id="f-airtel" onclick="fromNet('airtel')"><span class="ndot" style="background:#ff6b6b"></span>Airtel</button>
+<button class="netbtn" id="f-zamtel" onclick="fromNet('zamtel')"><span class="ndot" style="background:#00d4ff"></span>Zamtel</button>
+<button class="netbtn" id="f-speedpay" onclick="fromNet('speedpay')"><span class="ndot" style="background:#a78bfa"></span>SpeedPay</button>
+<button class="netbtn" id="f-zed" onclick="fromNet('zed')"><span class="ndot" style="background:#22c55e"></span>ZedMobile</button>
+</div>
+<input type="tel" id="from-phone" placeholder="Your mobile money number" oninput="update()" style="margin-top:4px">
+</div>
+
+<div class="field">
+<span class="label">Send To — Recipient Network</span>
+<div class="networks">
+<button class="netbtn" id="t-mtn" onclick="toNet('mtn')"><span class="ndot" style="background:#ffcb00"></span>MTN</button>
+<button class="netbtn" id="t-airtel" onclick="toNet('airtel')"><span class="ndot" style="background:#ff6b6b"></span>Airtel</button>
+<button class="netbtn" id="t-zamtel" onclick="toNet('zamtel')"><span class="ndot" style="background:#00d4ff"></span>Zamtel</button>
+<button class="netbtn" id="t-speedpay" onclick="toNet('speedpay')"><span class="ndot" style="background:#a78bfa"></span>SpeedPay</button>
+<button class="netbtn" id="t-zed" onclick="toNet('zed')"><span class="ndot" style="background:#22c55e"></span>ZedMobile</button>
+</div>
+<input type="tel" id="to-phone" placeholder="Recipient mobile money number" oninput="update()" style="margin-top:4px">
+</div>
+
+<div class="field">
+<span class="label">Recipient Name (optional)</span>
+<input type="text" id="to-name" placeholder="e.g. John Banda">
+</div>
+
+<div class="summary" id="summary" style="display:none">
+<div class="srow"><span class="slabel">You send</span><span class="sval" id="s-send">ZMW 0.00</span></div>
+<div class="srow"><span class="slabel">Fee (1%)</span><span class="sval" id="s-fee">ZMW 0.00</span></div>
+<div class="srow"><span class="slabel">Recipient gets</span><span class="sval" id="s-recv" style="color:#00d9a3">ZMW 0.00</span></div>
+</div>
+
+<button class="btn" id="send-btn" onclick="send()" disabled>Enter Details to Continue</button>
+<div class="fee-note">1% fee applies. No extra charge for cross-network transfers.</div>
+</div>
+
+<div id="proc-screen" class="hidden" style="text-align:center;padding:20px 0">
+<div class="spinner"></div>
+<div style="font-size:16px;font-weight:700;margin-bottom:8px">Processing Transfer</div>
+<div style="font-size:13px;color:#5a6a85">Please check your phone and enter your PIN.</div>
+</div>
+
+<div id="ok-screen" class="hidden">
+<div class="success-icon">✅</div>
+<div class="success-title">Money Sent!</div>
+<div class="success-amount" id="ok-amount">ZMW 0.00</div>
+<div class="success-ref" id="ok-ref">REF: —</div>
+<div class="summary">
+<div class="srow"><span class="slabel">From</span><span id="ok-from">—</span></div>
+<div class="srow"><span class="slabel">To</span><span id="ok-to">—</span></div>
+<div class="srow"><span class="slabel">Network</span><span id="ok-net">—</span></div>
+<div class="srow"><span class="slabel">Date</span><span id="ok-date">—</span></div>
+<div class="srow"><span class="slabel">Status</span><span style="color:#00d9a3;font-weight:700">Completed</span></div>
+</div>
+<button class="back-btn" onclick="location.reload()">Send Again</button>
+</div>
+
+</div>
+
+<script>
+var fNet=null, tNet=null;
+var netNames={mtn:'MTN',airtel:'Airtel',zamtel:'Zamtel',speedpay:'SpeedPay',zed:'ZedMobile'};
+
+function fromNet(id){
+document.querySelectorAll('[id^="f-"]').forEach(function(b){b.classList.remove('selected')});
+document.getElementById('f-'+id).classList.add('selected');
+fNet=id; update();
+}
+
+function toNet(id){
+document.querySelectorAll('[id^="t-"]').forEach(function(b){b.classList.remove('selected')});
+document.getElementById('t-'+id).classList.add('selected');
+tNet=id; update();
+}
+
+function update(){
+var amt=parseFloat(document.getElementById('amount').value)||0;
+var fp=document.getElementById('from-phone').value.trim();
+var tp=document.getElementById('to-phone').value.trim();
+var btn=document.getElementById('send-btn');
+var sum=document.getElementById('summary');
+if(amt>0 && fNet && tNet && fp && tp){
+var fee=(amt*0.01).toFixed(2);
+var recv=(amt-parseFloat(fee)).toFixed(2);
+document.getElementById('s-send').textContent='ZMW '+amt.toFixed(2);
+document.getElementById('s-fee').textContent='ZMW '+fee;
+document.getElementById('s-recv').textContent='ZMW '+recv;
+sum.style.display='block';
+btn.disabled=false;
+btn.textContent='Send ZMW '+amt.toFixed(2)+' via '+netNames[fNet];
+} else {
+sum.style.display='none';
+btn.disabled=true;
+btn.textContent='Enter Details to Continue';
+}
+}
+
+function send(){
+var amt=parseFloat(document.getElementById('amount').value);
+var fp=document.getElementById('from-phone').value.trim();
+var tp=document.getElementById('to-phone').value.trim();
+var name=document.getElementById('to-name').value.trim()||tp;
+document.getElementById('send-screen').style.display='none';
+document.getElementById('proc-screen').classList.remove('hidden');
+setTimeout(function(){
+var ref='INP-'+Date.now().toString().slice(-8);
+document.getElementById('proc-screen').classList.add('hidden');
+document.getElementById('ok-screen').classList.remove('hidden');
+document.getElementById('ok-amount').textContent='ZMW '+amt.toFixed(2);
+document.getElementById('ok-ref').textContent='REF: '+ref;
+document.getElementById('ok-from').textContent=fp+' ('+netNames[fNet]+')';
+document.getElementById('ok-to').textContent=tp+' ('+netNames[tNet]+')';
+document.getElementById('ok-net').textContent=netNames[fNet]+' → '+netNames[tNet];
+document.getElementById('ok-date').textContent=new Date().toLocaleString();
+},3000);
+}
+</script>
+</body>
+</html>
