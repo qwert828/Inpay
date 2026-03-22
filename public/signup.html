@@ -39,7 +39,11 @@ select option{background:#0f1520}
 <div class="field"><label>Phone</label><input id="ph" placeholder="+260 97X XXX XXX"></div>
 <div class="field"><label>Province</label><select id="pr"><option value="">Select...</option><option>Lusaka</option><option>Copperbelt</option><option>Central</option><option>Eastern</option><option>Luapula</option><option>Muchinga</option><option>Northern</option><option>North-Western</option><option>Southern</option><option>Western</option></select></div>
 <div class="field"><label>Business Type</label><select id="bt"><option value="">Select...</option><option>Retail Shop</option><option>Restaurant</option><option>Supermarket</option><option>Professional Services</option><option>E-Commerce</option><option>Healthcare</option><option>Education</option><option>NGO</option><option>Other</option></select></div>
-<button class="btn" onclick="go()">Create Account</button>
+<div id="captcha" style="margin-bottom:12px;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px">
+<input type="checkbox" id="human" style="width:18px;height:18px;cursor:pointer">
+<label for="human" style="font-size:13px;color:#5a6a85;cursor:pointer">I am not a robot</label>
+</div>
+<button class="btn" onclick="go()">Create Account</button>()">Create Account</button>
 <div class="link">Already registered? <a href="/admin/index.html">Sign in</a></div>
 </div>
 <div class="done" id="ok">
