@@ -56,16 +56,18 @@ select option{background:#0f1520}
 </div>
 </div>
 <script>
-function go(){if(!document.getElementById('human').checked){alert('Please confirm you are not a robot');return;}
-              
+function go(){
+var h=document.getElementById('human');
+if(!h||!h.checked){alert('Please confirm you are not a robot');return;}
 var b=document.getElementById('bn').value.trim();
 var e=document.getElementById('em').value.trim();
 var p=document.getElementById('ph').value.trim();
 var pr=document.getElementById('pr').value;
 var bt=document.getElementById('bt').value;
 if(!b||!e||!p||!pr||!bt){alert('Please fill all fields');return;}
-var k='inpay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+var k='inpay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
 document.getElementById('k').textContent=k;
 document.getElementById('frm').style.display='none';
 document.getElementById('ok').style.display='block';
 }
+</script>
