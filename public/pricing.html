@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pricing - InPay</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;padding:24px;min-height:100vh}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1a2235;margin-bottom:48px;max-width:900px;margin-left:auto;margin-right:auto}
+.logo{font-size:20px;font-weight:800;color:#00d9a3;text-decoration:none}
+.nav a{color:#5a6a85;text-decoration:none;font-size:14px}
+.nav a:hover{color:#00d9a3}
+.hero{text-align:center;max-width:600px;margin:0 auto 48px}
+.tag{background:rgba(0,217,163,.1);border:1px solid rgba(0,217,163,.2);color:#00d9a3;padding:6px 16px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:16px}
+h1{font-size:36px;font-weight:800;margin-bottom:12px}
+.hero p{color:#5a6a85;font-size:16px;line-height:1.7}
+.plans{display:flex;flex-direction:column;gap:16px;max-width:900px;margin:0 auto 48px}
+.plan{background:#0f1520;border:1px solid #1a2235;border-radius:16px;padding:28px}
+.plan.popular{border-color:#00d9a3;position:relative}
+.popular-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#00d9a3;color:#060910;padding:4px 16px;border-radius:20px;font-size:11px;font-weight:800;white-space:nowrap}
+.plan-name{font-size:18px;font-weight:800;margin-bottom:4px}
+.plan-desc{font-size:13px;color:#5a6a85;margin-bottom:20px}
+.plan-price{font-size:36px;font-weight:800;color:#00d9a3;margin-bottom:4px}
+.plan-price span{font-size:14px;color:#5a6a85;font-weight:400}
+.plan-fee{font-size:13px;color:#5a6a85;margin-bottom:24px}
+.features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.features li{font-size:13px;display:flex;align-items:center;gap:8px}
+.features li:before{content:"✓";color:#00d9a3;font-weight:700;flex-shrink:0}
+.features li.no:before{content:"✗";color:#5a6a85}
+.features li.no{color:#5a6a85}
+.btn{display:block;text-align:center;background:#00d9a3;color:#060910;padding:13px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px}
+.btn-out{background:transparent;color:#00d9a3;border:1px solid rgba(0,217,163,.3)}
+.divider{height:1px;background:#1a2235;margin:48px auto;max-width:900px}
+.faq{max-width:700px;margin:0 auto 48px}
+.faq h2{font-size:24px;font-weight:700;text-align:center;margin-bottom:32px}
+.faq-item{background:#0f1520;border:1px solid #1a2235;border-radius:10px;padding:20px;margin-bottom:12px}
+.faq-q{font-size:14px;font-weight:700;margin-bottom:8px}
+.faq-a{font-size:13px;color:#5a6a85;line-height:1.7}
+.compare{max-width:900px;margin:0 auto 48px;overflow-x:auto}
+.compare h2{font-size:24px;font-weight:700;text-align:center;margin-bottom:24px}
+table{width:100%;border-collapse:collapse}
+th{font-size:12px;color:#5a6a85;text-transform:uppercase;padding:10px 12px;text-align:left;border-bottom:1px solid #1a2235}
+td{font-size:13px;padding:12px;border-bottom:1px solid rgba(26,34,53,.5)}
+.check{color:#00d9a3;font-weight:700}
+.cross{color:#5a6a85}
+.footer{text-align:center;font-size:12px;color:#5a6a85;padding:24px 0;border-top:1px solid #1a2235;max-width:900px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<div class="nav">
+<a href="/" class="logo">InPay</a>
+<a href="/signup.html">Get Started Free</a>
+</div>
+
+<div class="hero">
+<div class="tag">Simple, transparent pricing</div>
+<h1>Pay as you grow</h1>
+<p>Start free. No setup fees. No hidden charges. Only pay when you get paid.</p>
+</div>
+
+<div class="plans">
+
+<div class="plan">
+<div class="plan-name">Starter</div>
+<div class="plan-desc">Perfect for small merchants just getting started</div>
+<div class="plan-price">K0 <span>/ month</span></div>
+<div class="plan-fee">1.78% per transaction</div>
+<ul class="features">
+<li>All 5 mobile money networks</li>
+<li>Single QR code</li>
+<li>Up to ZMW 50,000 per day</li>
+<li>Merchant dashboard</li>
+<li>Sandbox API access</li>
+<li>Email support</li>
+<li class="no">Webhooks</li>
+<li class="no">Priority support</li>
+<li class="no">Custom QR branding</li>
+</ul>
+<a href="/signup.html" class="btn btn-out">Get Started Free</a>
+</div>
+
+<div class="plan popular">
+<div class="popular-badge">MOST POPULAR</div>
+<div class="plan-name">Business</div>
+<div class="plan-desc">For growing businesses processing higher volumes</div>
+<div class="plan-price">K299 <span>/ month</span></div>
+<div class="plan-fee">1.0% per transaction</div>
+<ul class="features">
+<li>All 5 mobile money networks</li>
+<li>Single QR code</li>
+<li>Up to ZMW 200,000 per day</li>
+<li>Merchant dashboard</li>
+<li>Live API access</li>
+<li>Webhooks and callbacks</li>
+<li>Priority email support</li>
+<li>Custom QR branding</li>
+<li class="no">Dedicated account manager</li>
+</ul>
+<a href="/signup.html" class="btn">Start Business Plan</a>
+</div>
+
+<div class="plan">
+<div class="plan-name">Enterprise</div>
+<div class="plan-desc">For large merchants, banks and platform integrations</div>
+<div class="plan-price">Custom <span>pricing</span></div>
+<div class="plan-fee">From 0.7% per transaction</div>
+<ul class="features">
+<li>All 5 mobile money networks</li>
+<li>Unlimited daily volume</li>
+<li>Full API access</li>
+<li>Webhooks and callbacks</li>
+<li>Dedicated account manager</li>
+<li>Custom QR branding</li>
+<li>SLA guarantee</li>
+<li>White-label options</li>
+<li>Custom integrations</li>
+</ul>
+<a href="mailto:aaronmtamiraphiri1@gmail.com" class="btn btn-out">Contact Sales</a>
+</div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="compare">
+<h2>Compare Plans</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Starter</th>
+<th>Business</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Monthly fee</td><td>K0</td><td>K299</td><td>Custom</td></tr>
+<tr><td>Transaction fee</td><td>1.78%</td><td>1.0%</td><td>From 0.7%</td></tr>
+<tr><td>Daily limit</td><td>ZMW 50K</td><td>ZMW 200K</td><td>Unlimited</td></tr>
+<tr><td>All 5 networks</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td>QR code</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td>API access</td><td>Sandbox</td><td class="check">Live</td><td class="check">Live</td></tr>
+<tr><td>Webhooks</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td>Custom QR branding</td><td class="cross">✗</td><td class="check">✓</td><td class="check">✓</td></tr>
+<tr><td>Account manager</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+<tr><td>White-label</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="divider"></div>
+
+<div class="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<div class="faq-q">Is there a setup fee?</div>
+<div class="faq-a">No. InPay has zero setup fees. You sign up, get your API key and QR code, and start accepting payments immediately.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">When do I get paid?</div>
+<div class="faq-a">Settlements are processed daily. Funds collected from customers are transferred to your registered mobile money account every business day.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Can I accept payments from all networks on the free plan?</div>
+<div class="faq-a">Yes. Even on the free Starter plan, your customers can pay using any of the 5 Zambian mobile money networks — MTN, Airtel, Zamtel, SpeedPay and ZedMobile.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">What is a webhook?</div>
+<div class="faq-a">A webhook is an automatic notification sent to your system when a payment is completed. It allows your website or app to automatically update when a customer pays you.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Is InPay licensed by the Bank of Zambia?</div>
+<div class="faq-a">InPay is currently in the process of applying for a Payment Service Provider license from the Bank of Zambia. Sandbox operations are available while the license application is in progress.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">How do I upgrade my plan?</div>
+<div class="faq-a">Email us at aaronmtamiraphiri1@gmail.com with your business name and we will upgrade your account within 24 hours.</div>
+</div>
+</div>
+
+<div class="footer">
+2025 InPay Limited · Lusaka, Zambia · aaronmtamiraphiri1@gmail.com · +260 974 558 313
+</div>
+
+</body>
+</html>
