@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin - InPay</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:100vh}
+.nav{background:#0f1520;border-bottom:1px solid #1a2235;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:20px;font-weight:800;color:#00d9a3}
+.nav-right{display:flex;align-items:center;gap:16px}
+.admin-badge{background:rgba(239,68,68,.1);color:#ef4444;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.logout{font-size:12px;color:#5a6a85;text-decoration:none;padding:6px 12px;border:1px solid #1a2235;border-radius:6px}
+.container{padding:24px;max-width:1200px;margin:0 auto}
+.page-title{font-size:24px;font-weight:700;margin-bottom:4px}
+.page-sub{color:#5a6a85;font-size:14px;margin-bottom:32px}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:#0f1520;border:1px solid #1a2235;border-radius:12px;padding:20px}
+.stat-card .label{font-size:12px;color:#5a6a85;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.stat-card .value{font-size:28px;font-weight:700;color:#e8edf5}
+.stat-card .sub{font-size:12px;color:#5a6a85;margin-top:4px}
+.section{background:#0f1520;border:1px solid #1a2235;border-radius:12px;padding:20px;margin-bottom:24px}
+.section-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.btn{background:#00d9a3;color:#060910;padding:8px 16px;border-radius:8px;font-weight:700;font-size:13px;border:none;cursor:pointer}
+.btn-red{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+.btn-sm{padding:6px 10px;font-size:11px}
+.table{width:100%;border-collapse:collapse}
+.table th{font-size:11px;color:#5a6a85;text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px solid #1a2235}
+.table td{font-size:13px;padding:12px;border-bottom:1px solid rgba(26,34,53,.5)}
+.table tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700}
+.badge-success{background:rgba(0,217,163,.1);color:#00d9a3}
+.badge-pending{background:rgba(245,158,11,.1);color:#f59e0b}
+.badge-failed{background:rgba(239,68,68,.1);color:#ef4444}
+.badge-active{background:rgba(0,217,163,.1);color:#00d9a3}
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid #1a2235;padding-bottom:0}
+.tab{padding:8px 16px;font-size:13px;color:#5a6a85;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab.active{color:#00d9a3;border-bottom-color:#00d9a3}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.alert-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#060910;border-radius:8px;margin-bottom:8px;border-left:3px solid #f59e0b}
+.alert-item.high{border-left-color:#ef4444}
+.alert-title{font-size:13px;font-weight:600}
+.alert-sub{font-size:11px;color:#5a6a85;margin-top:2px}
+.alert-amount{font-size:13px;font-weight:700;color:#f59e0b}
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(26,34,53,.5)}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-size:13px;color:#5a6a85}
+.metric-value{font-size:14px;font-weight:700}
+.login-card{background:#0f1520;border:1px solid #1a2235;border-radius:16px;padding:40px;width:100%;max-width:380px;margin:80px auto}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;color:#5a6a85;text-transform:uppercase;margin-bottom:6px;font-weight:600}
+.field input{width:100%;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px 14px;color:#e8edf5;font-size:14px;outline:none;font-family:Arial}
+.field input:focus{border-color:#00d9a3}
+.btn-full{width:100%;background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px}
+.error{color:#ef4444;font-size:13px;text-align:center;margin-top:12px;display:none}
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+<div class="login-card">
+<div style="font-size:28px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:8px">InPay</div>
+<div style="color:#5a6a85;font-size:14px;text-align:center;margin-bottom:32px">Admin Portal</div>
+<div class="field"><label>Email</label><input type="email" id="login-email" placeholder="admin@inpay.zm"></div>
+<div class="field"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••"></div>
+<button class="btn-full" onclick="login()">Sign In</button>
+<div class="error" id="login-error">Invalid email or password</div>
+</div>
+</div>
+
+<div id="dashboard-screen" style="display:none">
+<div class="nav">
+<div class="logo">InPay Admin</div>
+<div class="nav-right">
+<span class="admin-badge">SUPERADMIN</span>
+<a href="#" class="logout" onclick="logout()">Sign Out</a>
+</div>
+</div>
+
+<div class="container">
+<div class="page-title">Admin Dashboard</div>
+<div class="page-sub">InPay platform overview — <span id="current-date"></span></div>
+
+<div class="stats-grid">
+<div class="stat-card">
+<div class="label">Total Merchants</div>
+<div class="value" id="stat-merchants">1</div>
+<div class="sub">Registered on InPay</div>
+</div>
+<div class="stat-card">
+<div class="label">Total Transactions</div>
+<div class="value">0</div>
+<div class="sub">All time</div>
+</div>
+<div class="stat-card">
+<div class="label">Total Volume</div>
+<div class="value">ZMW 0</div>
+<div class="sub">All time GMV</div>
+</div>
+<div class="stat-card">
+<div class="label">InPay Revenue</div>
+<div class="value">ZMW 0</div>
+<div class="sub">Fees collected</div>
+</div>
+</div>
+
+<div class="section">
+<div class="tabs">
+<div class="tab active" onclick="showTab('merchants')">Merchants</div>
+<div class="tab" onclick="showTab('transactions')">Transactions</div>
+<div class="tab" onclick="showTab('aml')">AML Alerts</div>
+<div class="tab" onclick="showTab('system')">System</div>
+</div>
+
+<div class="tab-content active" id="tab-merchants">
+<div class="section-title" style="margin-bottom:12px">
+Registered Merchants
+<button class="btn btn-sm">Export CSV</button>
+</div>
+<table class="table">
+<thead><tr>
+<th>Business Name</th>
+<th>Email</th>
+<th>Province</th>
+<th>Type</th>
+<th>Status</th>
+<th>Joined</th>
+<th>Action</th>
+</tr></thead>
+<tbody id="merchant-table">
+<tr>
+<td>InPay Demo Merchant</td>
+<td>demo@inpay.zm</td>
+<td>Lusaka</td>
+<td>Retail Shop</td>
+<td><span class="badge badge-active">Active</span></td>
+<td>Mar 2026</td>
+<td><button class="btn btn-sm">View</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tab-content" id="tab-transactions">
+<div class="section-title" style="margin-bottom:12px">All Transactions</div>
+<div style="text-align:center;padding:40px;color:#5a6a85;font-size:14px">
+No transactions yet. Merchants will appear here once they start processing payments.
+</div>
+</div>
+
+<div class="tab-content" id="tab-aml">
+<div class="section-title" style="margin-bottom:12px">
+AML/CFT Alerts
+<span class="badge badge-success">0 Active Alerts</span>
+</div>
+<div style="text-align:center;padding:40px;color:#5a6a85;font-size:14px">
+No AML alerts. The system is monitoring all transactions automatically.
+</div>
+</div>
+
+<div class="tab-content" id="tab-system">
+<div class="section-title" style="margin-bottom:12px">System Health</div>
+<div class="metric-row"><span class="metric-label">API Server</span><span class="metric-value" style="color:#00d9a3">Online</span></div>
+<div class="metric-row"><span class="metric-label">Database</span><span class="metric-value" style="color:#00d9a3">Connected</span></div>
+<div class="metric-row"><span class="metric-label">Railway Region</span><span class="metric-value">Europe West 4</span></div>
+<div class="metric-row"><span class="metric-label">Node Version</span><span class="metric-value">v22.x</span></div>
+<div class="metric-row"><span class="metric-label">BOZ PSP License</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
+<div class="metric-row"><span class="metric-label">MTN API</span><span class="metric-value" style="color:#f59e0b">Sandbox Only</span></div>
+<div class="metric-row"><span class="metric-label">Airtel API</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
+<div class="metric-row"><span class="metric-label">Zamtel API</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
+<div class="metric-row"><span class="metric-label">SpeedPay API</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
+<div class="metric-row"><span class="metric-label">ZedMobile API</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+function login(){
+var email=document.getElementById('login-email').value.trim();
+var pass=document.getElementById('login-pass').value.trim();
+if(email==='admin@inpay.zm' && pass==='InPay2026!'){
+document.getElementById('login-screen').style.display='none';
+document.getElementById('dashboard-screen').style.display='block';
+}else{
+document.getElementById('login-error').style.display='block';
+}
+}
+
+function logout(){
+document.getElementById('login-screen').style.display='block';
+document.getElementById('dashboard-screen').style.display='none';
+}
+
+function showTab(name){
+document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
+document.getElementById('tab-'+name).classList.add('active');
+event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
