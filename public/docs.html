@@ -7,15 +7,16 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;padding:24px;max-width:800px;margin:0 auto}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1a2235;margin-bottom:40px}
-.logo{font-size:22px;font-weight:800;color:#00d9a3;text-decoration:none}
-.nav a{color:#5a6a85;text-decoration:none;font-size:14px}
-.nav a:hover{color:#00d9a3}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1a2235;margin-bottom:40px}
+.logo{font-size:20px;font-weight:800;color:#00d9a3;text-decoration:none}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.navlinks a{color:#5a6a85;text-decoration:none;font-size:13px}
+.navlinks a:hover{color:#00d9a3}
+.navbtn{background:#00d9a3;color:#060910 !important;padding:8px 16px;border-radius:8px;font-weight:700}
+.tag{background:rgba(0,217,163,.1);border:1px solid rgba(0,217,163,.2);color:#00d9a3;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block;margin-bottom:16px}
 h1{font-size:36px;font-weight:800;margin-bottom:12px;color:#e8edf5}
 .sub{color:#5a6a85;font-size:16px;margin-bottom:40px;line-height:1.6}
-.tag{background:rgba(0,217,163,.1);border:1px solid rgba(0,217,163,.2);color:#00d9a3;padding:4px 12px;border-radius:20px;font-size:11px;display:inline-block;margin-bottom:16px}
 h2{font-size:22px;font-weight:700;margin:40px 0 16px;color:#e8edf5;border-top:1px solid #1a2235;padding-top:32px}
-h2:first-of-type{border-top:none;padding-top:0}
 p{color:#5a6a85;line-height:1.7;margin-bottom:16px;font-size:14px}
 .url-bar{background:#0f1520;border:1px solid rgba(0,217,163,.2);border-radius:8px;padding:12px 16px;font-family:monospace;font-size:13px;margin:16px 0;display:flex;align-items:center;gap:12px}
 .env{padding:3px 8px;border-radius:12px;font-size:10px;font-weight:700}
@@ -30,17 +31,29 @@ p{color:#5a6a85;line-height:1.7;margin-bottom:16px;font-size:14px}
 .ep-desc{font-size:12px;color:#5a6a85;margin-left:auto}
 .ep-body{padding:16px 18px}
 pre{background:#030507;border:1px solid #1a2235;border-radius:8px;padding:16px;overflow-x:auto;font-size:12px;line-height:1.8;margin:12px 0;color:#e8edf5}
-.kw{color:#c792ea}.str{color:#c3e88d}.key{color:#00d9a3}.num{color:#f78c6c}.cm{color:#546e7a}
+.key{color:#00d9a3}
+.str{color:#c3e88d}
+.num{color:#f78c6c}
+.cm{color:#546e7a}
 .alert{background:rgba(0,217,163,.07);border:1px solid rgba(0,217,163,.2);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:13px;color:#6ee7b7}
 .btn{display:inline-block;background:#00d9a3;color:#060910;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;margin-top:8px}
 .footer{margin-top:60px;padding-top:24px;border-top:1px solid #1a2235;font-size:12px;color:#5a6a85;text-align:center;padding-bottom:40px}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.footer-links a{color:#5a6a85;text-decoration:none}
+.footer-links a:hover{color:#00d9a3}
 </style>
 </head>
 <body>
-<div class="nav">
+
+<nav>
 <a href="/" class="logo">InPay</a>
-<a href="/signup.html">Get API Key</a>
+<div class="navlinks">
+<a href="/pricing.html">Pricing</a>
+<a href="/send.html">Send Money</a>
+<a href="/about.html">About</a>
+<a href="/signup.html" class="navbtn">Get API Key</a>
 </div>
+</nav>
 
 <div class="tag">API Reference v1.0</div>
 <h1>InPay API Docs</h1>
@@ -77,7 +90,7 @@ Content-Type: application/json</pre>
   <span class="key">"transactionId"</span>: <span class="str">"uuid-xxxx"</span>,
   <span class="key">"reference"</span>:     <span class="str">"INP-1714500000-A3B"</span>,
   <span class="key">"amount"</span>:        <span class="num">250.00</span>,
-  <span class="key">"fee"</span>:           <span class="num">2.50</span>
+  <span class="key">"fee"</span>:           <span class="num">4.45</span>
 }</pre>
 </div>
 </div>
@@ -111,24 +124,34 @@ Content-Type: application/json</pre>
 {
   <span class="key">"qrId"</span>:      <span class="str">"uuid-xxxx"</span>,
   <span class="key">"qrPayload"</span>: <span class="str">"https://pay.inpay.zm/q/uuid"</span>,
-  <span class="key">"expiresAt"</span>: <span class="str">"2025-05-01T12:15:00Z"</span>
+  <span class="key">"expiresAt"</span>: <span class="str">"2026-06-01T12:15:00Z"</span>
 }</pre>
 </div>
 </div>
 
 <h2>Supported Providers</h2>
-<pre>MTN      → MTN Mobile Money Zambia
-AIRTEL   → Airtel Money Zambia
-ZAMTEL   → Zamtel Kwacha
-SPEEDPAY → SpeedPay / Zanaco
-ZEDMOBILE → ZedWallet (ZedMobile)</pre>
+<pre>MTN       → MTN Mobile Money Zambia  (097/096)
+AIRTEL    → Airtel Money Zambia       (095/075)
+ZAMTEL    → Zamtel Kwacha             (094)
+SPEEDPAY  → SpeedPay / Zanaco         (077)
+ZEDMOBILE → ZedWallet (ZedMobile)     (098)</pre>
 
 <h2>Ready to integrate?</h2>
 <p>Get your free sandbox API key and start testing in minutes. No approval needed.</p>
 <a href="/signup.html" class="btn">Get Your API Key →</a>
 
 <div class="footer">
-InPay Limited · Lusaka, Zambia · aaronmtamiraphiri1@gmail.com
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/pricing.html">Pricing</a>
+<a href="/send.html">Send Money</a>
+<a href="/pay.html">Pay</a>
+<a href="/about.html">About</a>
+<a href="/signup.html">Sign Up</a>
 </div>
+2025 InPay Limited · Lusaka, Zambia · BOZ PSP License Pending<br>
+aaronmtamiraphiri1@gmail.com · +260 974 558 313
+</div>
+
 </body>
-</html>
+</html
