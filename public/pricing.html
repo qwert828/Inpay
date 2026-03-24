@@ -7,10 +7,12 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;padding:24px;min-height:100vh}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1a2235;margin-bottom:48px;max-width:900px;margin-left:auto;margin-right:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1a2235;margin-bottom:48px;max-width:900px;margin-left:auto;margin-right:auto}
 .logo{font-size:20px;font-weight:800;color:#00d9a3;text-decoration:none}
-.nav a{color:#5a6a85;text-decoration:none;font-size:14px}
-.nav a:hover{color:#00d9a3}
+.navlinks{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.navlinks a{color:#5a6a85;text-decoration:none;font-size:13px}
+.navlinks a:hover{color:#00d9a3}
+.navbtn{background:#00d9a3;color:#060910 !important;padding:8px 16px;border-radius:8px;font-weight:700}
 .hero{text-align:center;max-width:600px;margin:0 auto 48px}
 .tag{background:rgba(0,217,163,.1);border:1px solid rgba(0,217,163,.2);color:#00d9a3;padding:6px 16px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:16px}
 h1{font-size:36px;font-weight:800;margin-bottom:12px}
@@ -45,14 +47,22 @@ td{font-size:13px;padding:12px;border-bottom:1px solid rgba(26,34,53,.5)}
 .check{color:#00d9a3;font-weight:700}
 .cross{color:#5a6a85}
 .footer{text-align:center;font-size:12px;color:#5a6a85;padding:24px 0;border-top:1px solid #1a2235;max-width:900px;margin:0 auto}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.footer-links a{color:#5a6a85;text-decoration:none}
+.footer-links a:hover{color:#00d9a3}
 </style>
 </head>
 <body>
 
-<div class="nav">
+<nav>
 <a href="/" class="logo">InPay</a>
-<a href="/signup.html">Get Started Free</a>
+<div class="navlinks">
+<a href="/docs.html">API Docs</a>
+<a href="/send.html">Send Money</a>
+<a href="/about.html">About</a>
+<a href="/signup.html" class="navbtn">Get Started</a>
 </div>
+</nav>
 
 <div class="hero">
 <div class="tag">Simple, transparent pricing</div>
@@ -128,12 +138,7 @@ td{font-size:13px;padding:12px;border-bottom:1px solid rgba(26,34,53,.5)}
 <h2>Compare Plans</h2>
 <table>
 <thead>
-<tr>
-<th>Feature</th>
-<th>Starter</th>
-<th>Business</th>
-<th>Enterprise</th>
-</tr>
+<tr><th>Feature</th><th>Starter</th><th>Business</th><th>Enterprise</th></tr>
 </thead>
 <tbody>
 <tr><td>Monthly fee</td><td>K0</td><td>K299</td><td>Custom</td></tr>
@@ -181,7 +186,16 @@ td{font-size:13px;padding:12px;border-bottom:1px solid rgba(26,34,53,.5)}
 </div>
 
 <div class="footer">
-2025 InPay Limited · Lusaka, Zambia · aaronmtamiraphiri1@gmail.com · +260 974 558 313
+<div class="footer-links">
+<a href="/">Home</a>
+<a href="/docs.html">API Docs</a>
+<a href="/send.html">Send Money</a>
+<a href="/pay.html">Pay</a>
+<a href="/about.html">About</a>
+<a href="/signup.html">Sign Up</a>
+</div>
+2025 InPay Limited · Lusaka, Zambia · BOZ PSP License Pending<br>
+aaronmtamiraphiri1@gmail.com · +260 974 558 313
 </div>
 
 </body>
