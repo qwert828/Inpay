@@ -17,55 +17,157 @@ input,select{width:100%;background:#060910;border:1px solid #1a2235;border-radiu
 input:focus,select:focus{border-color:#00d9a3}
 input::placeholder{color:#5a6a85}
 select option{background:#0f1520}
-.btn{width:100%;background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px}
+.btn{width:100%;background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;font-family:Arial}
+.btn:hover{background:#00c090}
+.btn-out{background:transparent;color:#00d9a3;border:1px solid rgba(0,217,163,.3)}
 .link{text-align:center;margin-top:20px;font-size:13px;color:#5a6a85}
 .link a{color:#00d9a3;text-decoration:none}
-.done{display:none;text-align:center;padding:20px 0}
-.done h3{color:#00d9a3;font-size:20px;margin-bottom:12px}
-.done p{color:#5a6a85;font-size:14px;line-height:1.6;margin-bottom:12px}
+.error{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:16px;display:none}
+.success-box{display:none;text-align:center;padding:20px 0}
+.success-box h3{color:#00d9a3;font-size:20px;margin-bottom:12px}
+.success-box p{color:#5a6a85;font-size:14px;line-height:1.6;margin-bottom:12px}
 .key{background:#060910;border:1px solid rgba(0,217,163,.3);border-radius:8px;padding:12px;font-family:monospace;font-size:11px;color:#00d9a3;word-break:break-all;margin:16px 0;text-align:left}
-.back{display:block;color:#5a6a85;text-decoration:none;font-size:13px;margin-bottom:20px}
+.back{display:block;color:#5a6a85;text-decoration:none;font-size:13px;margin-bottom:20px;text-align:center}
+.back:hover{color:#00d9a3}
+.badge{display:inline-block;background:rgba(0,217,163,.1);border:1px solid rgba(0,217,163,.2);color:#00d9a3;padding:4px 12px;border-radius:20px;font-size:11px;margin-bottom:16px}
+.captcha-box{margin-bottom:16px;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px}
+.captcha-box input[type="checkbox"]{width:18px;height:18px;cursor:pointer;flex-shrink:0}
+.captcha-box label{font-size:13px;color:#5a6a85;cursor:pointer;text-transform:none;margin-bottom:0}
+.step{display:none}
+.step.active{display:block}
+.steps-bar{display:flex;gap:8px;margin-bottom:28px}
+.step-dot{flex:1;height:4px;background:#1a2235;border-radius:4px}
+.step-dot.done{background:#00d9a3}
 </style>
 </head>
 <body>
 <div class="card">
-<a href="/" class="back">Back to InPay</a>
+
+<a href="/" class="back">← Back to InPay</a>
 <div class="logo">InPay</div>
 <div class="sub">Zambia Unified Payment Rail</div>
-<div id="frm">
+
+<div class="steps-bar">
+<div class="step-dot" id="dot1"></div>
+<div class="step-dot" id="dot2"></div>
+<div class="step-dot" id="dot3"></div>
+</div>
+
+<div class="error" id="error-box"></div>
+
+<!-- STEP 1: Access Code -->
+<div class="step active" id="step1">
+<div style="text-align:center;margin-bottom:20px">
+<div class="badge">Beta Access</div>
+</div>
+<h2>Enter Access Code</h2>
+<p style="color:#5a6a85;font-size:13px;text-align:center;margin-bottom:20px;line-height:1.6">InPay is currently in beta. Enter your access code to create a merchant account.</p>
+<div class="field">
+<label>Access Code</label>
+<input type="text" id="access-code" placeholder="Enter your InPay access code" style="text-align:center;font-size:18px;letter-spacing:4px;text-transform:uppercase">
+</div>
+<button class="btn" onclick="checkCode()">Verify Code</button>
+<div class="link" style="margin-top:16px">Don't have a code? <a href="mailto:aaronmtamiraphiri1@gmail.com">Request access</a></div>
+</div>
+
+<!-- STEP 2: Business Details -->
+<div class="step" id="step2">
 <h2>Create Merchant Account</h2>
-<div class="field"><label>Business Name</label><input id="bn" placeholder="Acme Shop Lusaka"></div>
-<div class="field"><label>Email</label><input type="email" id="em" placeholder="you@business.zm"></div>
-<div class="field"><label>Phone</label><input id="ph" placeholder="+260 97X XXX XXX"></div>
-<div class="field"><label>Province</label><select id="pr"><option value="">Select...</option><option>Lusaka</option><option>Copperbelt</option><option>Central</option><option>Eastern</option><option>Luapula</option><option>Muchinga</option><option>Northern</option><option>North-Western</option><option>Southern</option><option>Western</option></select></div>
-<div class="field"><label>Business Type</label><select id="bt"><option value="">Select...</option><option>Retail Shop</option><option>Restaurant</option><option>Supermarket</option><option>Professional Services</option><option>E-Commerce</option><option>Healthcare</option><option>Education</option><option>NGO</option><option>Other</option></select></div>
-<div id="captcha" style="margin-bottom:12px;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px">
-<input type="checkbox" id="human" style="width:18px;height:18px;cursor:pointer">
-<label for="human" style="font-size:13px;color:#5a6a85;cursor:pointer">I am not a robot</label>
+<div class="field"><label>Business Name</label><input id="bn" placeholder="e.g. Acme Shop Lusaka"></div>
+<div class="field"><label>Email Address</label><input type="email" id="em" placeholder="you@business.zm"></div>
+<div class="field"><label>Phone Number</label><input type="tel" id="ph" placeholder="+260 9XX XXX XXX"></div>
+<div class="field"><label>Province</label>
+<select id="pr">
+<option value="">Select province...</option>
+<option>Lusaka</option><option>Copperbelt</option><option>Central</option>
+<option>Eastern</option><option>Luapula</option><option>Muchinga</option>
+<option>Northern</option><option>North-Western</option><option>Southern</option><option>Western</option>
+</select></div>
+<div class="field"><label>Business Type</label>
+<select id="bt">
+<option value="">Select type...</option>
+<option>Retail Shop</option><option>Restaurant / Cafe</option><option>Supermarket</option>
+<option>Professional Services</option><option>E-Commerce</option>
+<option>Healthcare</option><option>Education</option><option>NGO / Non-Profit</option><option>Other</option>
+</select></div>
+<div class="captcha-box">
+<input type="checkbox" id="human">
+<label for="human">I am not a robot</label>
 </div>
-<button class="btn" onclick="go()">Create Account</button>
-  
-<div class="link">Already registered? <a href="/admin/index.html">Sign in</a></div>
+<button class="btn" onclick="submitForm()">Create Account</button>
+<div class="link">Already registered? <a href="/admin.html">Sign in</a></div>
 </div>
-<div class="done" id="ok">
+
+<!-- STEP 3: Success -->
+<div class="step" id="step3">
+<div class="success-box" style="display:block">
+<div style="font-size:56px;margin-bottom:16px">🎉</div>
 <h3>Welcome to InPay!</h3>
-<p>Your sandbox API key is below. Save it now.</p>
-<div class="key" id="k"></div>
-<p>Live key issued after KYB verification.</p>
-<a href="/" class="btn" style="display:block;text-decoration:none;text-align:center;margin-top:16px">Back to Home</a>
+<p>Your merchant account is ready. Save your sandbox API key — it will not be shown again.</p>
+<div class="key" id="api-key-display"></div>
+<p style="font-size:12px;color:#5a6a85;margin-bottom:20px">Your live key will be issued after KYB verification. BOZ license pending.</p>
+<button class="btn" onclick="gotoDashboard()" style="text-decoration:none">Go to Dashboard →</button>
 </div>
 </div>
+
+</div>
+
 <script>
-function go(){
-var h=document.getElementById('human');
-if(!h||!h.checked){alert('Please confirm you are not a robot');return;}
+var merchantName = '';
+var apiKey = '';
+
+var VALID_CODES = ['INPAY2026', 'BETA001', 'MERCHANT01', 'LUSAKA01', 'AARON01'];
+
+function showError(msg){
+var box = document.getElementById('error-box');
+box.textContent = msg;
+box.style.display = 'block';
+setTimeout(function(){box.style.display='none';}, 4000);
+}
+
+function setStep(n){
+document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
+document.getElementById('step'+n).classList.add('active');
+for(var i=1;i<=3;i++){
+var dot = document.getElementById('dot'+i);
+dot.className = 'step-dot' + (i<=n?' done':'');
+}
+}
+
+function checkCode(){
+var code = document.getElementById('access-code').value.trim().toUpperCase();
+if(!code){showError('Please enter your access code');return;}
+if(VALID_CODES.indexOf(code) === -1){
+showError('Invalid access code. Contact aaronmtamiraphiri1@gmail.com to request access.');
+return;
+}
+setStep(2);
+}
+
+function submitForm(){
+var h = document.getElementById('human');
+if(!h.checked){showError('Please confirm you are not a robot');return;}
 var b=document.getElementById('bn').value.trim();
 var e=document.getElementById('em').value.trim();
 var p=document.getElementById('ph').value.trim();
 var pr=document.getElementById('pr').value;
 var bt=document.getElementById('bt').value;
-if(!b||!e||!p||!pr||!bt){alert('Please fill all fields');return;}
-var k='inpay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
-document.getElementById('k').textContent=k;window.location.href='/dashboard.html?name='+encodeURIComponent(b)+'&key='+k;
+if(!b||!e||!p||!pr||!bt){showError('Please fill in all fields');return;}
+merchantName = b;
+apiKey = 'inpay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+document.getElementById('api-key-display').textContent = apiKey;
+localStorage.setItem('inpay_merchant_name', b);
+localStorage.setItem('inpay_api_key', apiKey);
+setStep(3);
 }
+
+function gotoDashboard(){
+window.location.href='/dashboard.html?name='+encodeURIComponent(merchantName)+'&key='+apiKey;
+}
+
+document.getElementById('access-code').addEventListener('keypress', function(e){
+if(e.key==='Enter') checkCode();
+});
 </script>
+</body>
+</html>
