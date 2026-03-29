@@ -15,46 +15,35 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 h2{font-size:20px;font-weight:700;margin-bottom:24px;text-align:center}
 .field{margin-bottom:16px}
 .label{font-size:12px;color:#5a6a85;text-transform:uppercase;margin-bottom:6px;font-weight:600;display:block}
-input,select{width:100%;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px 14px;color:#e8edf5;font-size:14px;outline:none;font-family:Arial}
-input:focus,select:focus{border-color:#00d9a3}
+input{width:100%;background:#060910;border:1px solid #1a2235;border-radius:8px;padding:12px 14px;color:#e8edf5;font-size:14px;outline:none;font-family:Arial}
+input:focus{border-color:#00d9a3}
 input::placeholder{color:#5a6a85}
-select option{background:#0f1520}
 .amount-input{font-size:28px;font-weight:700;text-align:center}
-.networks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.netbtn{padding:10px;background:#060910;border:2px solid #1a2235;border-radius:8px;cursor:pointer;font-family:Arial;color:#e8edf5;text-align:center;font-size:12px;font-weight:600}
-.netbtn.selected{border-color:#00d9a3;background:rgba(0,217,163,.05);color:#00d9a3}
-.ndot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
-.phone-row{display:flex;gap:8px;align-items:flex-end}
-.phone-row input{flex:1}
-.verify-btn{background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:12px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:Arial;white-space:nowrap;flex-shrink:0}
-.verify-btn:disabled{background:#1a2235;color:#5a6a85;cursor:not-allowed}
 .recipient-card{background:#060910;border:1px solid rgba(0,217,163,.3);border-radius:10px;padding:14px;margin-top:8px;display:none;align-items:center;gap:12px}
 .recipient-card.show{display:flex}
-.recipient-avatar{width:40px;height:40px;background:rgba(0,217,163,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.recipient-name{font-size:14px;font-weight:700;color:#e8edf5}
-.recipient-phone{font-size:12px;color:#5a6a85;margin-top:2px}
-.recipient-network{font-size:11px;color:#00d9a3;margin-top:2px;font-weight:600}
-.recipient-verified{font-size:11px;color:#00d9a3;margin-left:auto;font-weight:700}
-.loading-card{background:#060910;border:1px solid #1a2235;border-radius:10px;padding:14px;margin-top:8px;display:none;align-items:center;gap:12px}
-.loading-card.show{display:flex}
-.mini-spinner{width:20px;height:20px;border:2px solid rgba(0,217,163,.2);border-top-color:#00d9a3;border-radius:50%;animation:spin 0.8s linear infinite}
+.avatar{width:44px;height:44px;background:rgba(0,217,163,.15);border:2px solid rgba(0,217,163,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#00d9a3;flex-shrink:0}
+.rname{font-size:15px;font-weight:700;color:#e8edf5}
+.rphone{font-size:12px;color:#5a6a85;margin-top:2px}
+.rnetwork{font-size:11px;font-weight:700;margin-top:3px}
+.verified{font-size:11px;color:#00d9a3;font-weight:700;margin-left:auto;flex-shrink:0}
+.loading{background:#060910;border:1px solid #1a2235;border-radius:10px;padding:14px;margin-top:8px;display:none;align-items:center;gap:10px}
+.loading.show{display:flex}
+.mini-spin{width:18px;height:18px;border:2px solid rgba(0,217,163,.2);border-top-color:#00d9a3;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.summary{background:#060910;border-radius:8px;padding:12px;margin-bottom:20px}
+.summary{background:#060910;border-radius:8px;padding:12px;margin-bottom:20px;display:none}
 .srow{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(26,34,53,.5);font-size:13px}
 .srow:last-child{border-bottom:none}
 .slabel{color:#5a6a85}
-.sval{font-weight:600}
-.btn{width:100%;background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:Arial}
+.btn{width:100%;background:#00d9a3;color:#060910;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;font-family:Arial;margin-top:8px}
 .btn:disabled{background:#1a2235;color:#5a6a85;cursor:not-allowed}
+.fee-note{font-size:11px;color:#5a6a85;text-align:center;margin-top:10px}
 .hidden{display:none}
 .spinner{width:48px;height:48px;border:3px solid rgba(0,217,163,.2);border-top-color:#00d9a3;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px}
-.success-icon{font-size:56px;text-align:center;margin-bottom:12px}
-.success-title{font-size:20px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:8px}
-.success-amount{font-size:32px;font-weight:700;text-align:center;margin-bottom:4px}
-.success-ref{font-size:11px;color:#5a6a85;text-align:center;font-family:monospace;margin-bottom:20px}
+.ok-icon{font-size:56px;text-align:center;margin-bottom:12px}
+.ok-title{font-size:20px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:8px}
+.ok-amount{font-size:32px;font-weight:700;text-align:center;margin-bottom:4px}
+.ok-ref{font-size:11px;color:#5a6a85;text-align:center;font-family:monospace;margin-bottom:20px}
 .back-btn{width:100%;background:transparent;color:#00d9a3;border:1px solid rgba(0,217,163,.3);border-radius:8px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:Arial}
-.fee-note{font-size:11px;color:#5a6a85;text-align:center;margin-top:10px}
-.error-msg{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444;padding:8px 12px;border-radius:8px;font-size:12px;margin-top:8px;display:none}
 </style>
 </head>
 <body>
@@ -72,60 +61,33 @@ select option{background:#0f1520}
 </div>
 
 <div class="field">
-<span class="label">Your Network</span>
-<div class="networks">
-<button class="netbtn" id="f-mtn" onclick="fromNet('mtn')"><span class="ndot" style="background:#ffcb00"></span>MTN</button>
-<button class="netbtn" id="f-airtel" onclick="fromNet('airtel')"><span class="ndot" style="background:#ff6b6b"></span>Airtel</button>
-<button class="netbtn" id="f-zamtel" onclick="fromNet('zamtel')"><span class="ndot" style="background:#00d4ff"></span>Zamtel</button>
-<button class="netbtn" id="f-speedpay" onclick="fromNet('speedpay')"><span class="ndot" style="background:#a78bfa"></span>SpeedPay</button>
-<button class="netbtn" id="f-zed" onclick="fromNet('zed')"><span class="ndot" style="background:#22c55e"></span>ZedMobile</button>
-</div>
-<input type="tel" id="from-phone" placeholder="Your mobile money number" oninput="update()" style="margin-top:8px">
-</div>
+<span class="label">Recipient Mobile Money Number</span>
+<input type="tel" id="to-phone" placeholder="e.g. 0971234567" oninput="onPhoneInput()" maxlength="13">
 
-<div class="field">
-<span class="label">Recipient Network</span>
-<div class="networks">
-<button class="netbtn" id="t-mtn" onclick="toNet('mtn')"><span class="ndot" style="background:#ffcb00"></span>MTN</button>
-<button class="netbtn" id="t-airtel" onclick="toNet('airtel')"><span class="ndot" style="background:#ff6b6b"></span>Airtel</button>
-<button class="netbtn" id="t-zamtel" onclick="toNet('zamtel')"><span class="ndot" style="background:#00d4ff"></span>Zamtel</button>
-<button class="netbtn" id="t-speedpay" onclick="toNet('speedpay')"><span class="ndot" style="background:#a78bfa"></span>SpeedPay</button>
-<button class="netbtn" id="t-zed" onclick="toNet('zed')"><span class="ndot" style="background:#22c55e"></span>ZedMobile</button>
-</div>
-
-<div class="phone-row" style="margin-top:8px">
-<input type="tel" id="to-phone" placeholder="Recipient number" oninput="onPhoneInput()">
-<button class="verify-btn" id="verify-btn" onclick="verifyRecipient()" disabled>Verify</button>
-</div>
-
-<div class="loading-card" id="loading-card">
-<div class="mini-spinner"></div>
+<div class="loading" id="loading">
+<div class="mini-spin"></div>
 <span style="font-size:13px;color:#5a6a85">Looking up recipient...</span>
 </div>
 
 <div class="recipient-card" id="recipient-card">
-<div class="recipient-avatar" id="recipient-avatar">👤</div>
-<div>
-<div class="recipient-name" id="recipient-name">—</div>
-<div class="recipient-phone" id="recipient-phone">—</div>
-<div class="recipient-network" id="recipient-network">—</div>
+<div class="avatar" id="avatar">?</div>
+<div style="flex:1;min-width:0">
+<div class="rname" id="rname">—</div>
+<div class="rphone" id="rphone">—</div>
+<div class="rnetwork" id="rnetwork">—</div>
 </div>
-<div class="recipient-verified">✓ Verified</div>
+<div class="verified">✓ Verified</div>
 </div>
-
-<div class="error-msg" id="error-msg">Could not verify this number. Please check and try again.</div>
 </div>
 
-<div class="field" id="summary-section" style="display:none">
-<div class="summary">
-<div class="srow"><span class="slabel">You send</span><span class="sval" id="s-send">ZMW 0.00</span></div>
-<div class="srow"><span class="slabel">Fee (1%)</span><span class="sval" id="s-fee">ZMW 0.00</span></div>
-<div class="srow"><span class="slabel">Recipient gets</span><span class="sval" id="s-recv" style="color:#00d9a3">ZMW 0.00</span></div>
-</div>
+<div class="summary" id="summary">
+<div class="srow"><span class="slabel">You send</span><span id="s-send" style="font-weight:600">ZMW 0.00</span></div>
+<div class="srow"><span class="slabel">Fee (1%)</span><span id="s-fee" style="font-weight:600">ZMW 0.00</span></div>
+<div class="srow"><span class="slabel">Recipient gets</span><span id="s-recv" style="color:#00d9a3;font-weight:700">ZMW 0.00</span></div>
 </div>
 
 <button class="btn" id="send-btn" onclick="send()" disabled>Enter Details to Continue</button>
-<div class="fee-note">1% fee. No extra charge for cross-network transfers.</div>
+<div class="fee-note">1% fee applies. Cross-network transfers supported.</div>
 </div>
 
 <div id="proc-screen" class="hidden" style="text-align:center;padding:20px 0">
@@ -135,14 +97,13 @@ select option{background:#0f1520}
 </div>
 
 <div id="ok-screen" class="hidden">
-<div class="success-icon">✅</div>
-<div class="success-title">Money Sent!</div>
-<div class="success-amount" id="ok-amount">ZMW 0.00</div>
-<div class="success-ref" id="ok-ref">REF: —</div>
-<div class="summary">
-<div class="srow"><span class="slabel">From</span><span id="ok-from">—</span></div>
-<div class="srow"><span class="slabel">To</span><span id="ok-to">—</span></div>
+<div class="ok-icon">✅</div>
+<div class="ok-title">Money Sent!</div>
+<div class="ok-amount" id="ok-amount">ZMW 0.00</div>
+<div class="ok-ref" id="ok-ref">REF: —</div>
+<div class="summary" style="display:block;margin-bottom:16px">
 <div class="srow"><span class="slabel">Recipient Name</span><span id="ok-name" style="color:#00d9a3;font-weight:700">—</span></div>
+<div class="srow"><span class="slabel">Phone</span><span id="ok-phone">—</span></div>
 <div class="srow"><span class="slabel">Network</span><span id="ok-net">—</span></div>
 <div class="srow"><span class="slabel">Date</span><span id="ok-date">—</span></div>
 <div class="srow"><span class="slabel">Status</span><span style="color:#00d9a3;font-weight:700">Completed</span></div>
@@ -153,136 +114,107 @@ select option{background:#0f1520}
 </div>
 
 <script>
-var fNet=null, tNet=null, recipientVerified=false, recipientName='';
-var netNames={mtn:'MTN',airtel:'Airtel',zamtel:'Zamtel',speedpay:'SpeedPay',zed:'ZedMobile'};
+var recipientVerified = false;
+var recipientName = '';
+var recipientNetwork = '';
+var lookupTimer = null;
 
-// Simulated name database for demo
-// In production this calls the actual mobile money network API
 var nameDB = {
-  '097': ['Chanda Mwape','Bwalya Mutale','Mwansa Chipimo','Kondwani Phiri','Lombe Sichone'],
-  '096': ['Temwani Banda','Chipego Musonda','Monde Simunyola','Kafula Mumba','Ntombizodwa Daka'],
-  '095': ['Chisomo Zulu','Mapalo Mwila','Mutinta Haimbe','Chimwemwe Phiri','Lubasi Nkonde'],
-  '075': ['Precious Mulenga','Nachilima Lungu','Mubanga Tembo','Webby Chanda','Nakamba Siame'],
-  '094': ['Tendai Nkemelu','Mulenga Kapwepwe','Bupe Mwamba','Chibwe Mwanza','Chileshe Lupiya'],
-  '077': ['Mukuka Muteba','Nkole Siame','Mwila Chanda','Kabwe Mwape','Nchimunya Zulu'],
-  '098': ['Kondwani Mwenya','Tapela Phiri','Monde Chanda','Bwalya Siame','Chanda Lungu'],
+  '097': {names:['Chanda Mwape','Bwalya Mutale','Mwansa Chipimo','Kondwani Phiri','Lombe Sichone'], net:'MTN Mobile Money', color:'#ffcb00'},
+  '096': {names:['Temwani Banda','Chipego Musonda','Monde Simunyola','Kafula Mumba','Ntombizodwa Daka'], net:'MTN Mobile Money', color:'#ffcb00'},
+  '095': {names:['Chisomo Zulu','Mapalo Mwila','Mutinta Haimbe','Chimwemwe Phiri','Lubasi Nkonde'], net:'Airtel Money', color:'#ff6b6b'},
+  '075': {names:['Precious Mulenga','Nachilima Lungu','Mubanga Tembo','Webby Chanda','Nakamba Siame'], net:'Airtel Money', color:'#ff6b6b'},
+  '094': {names:['Tendai Nkemelu','Mulenga Kapwepwe','Bupe Mwamba','Chibwe Mwanza','Chileshe Lupiya'], net:'Zamtel Kwacha', color:'#00d4ff'},
+  '077': {names:['Mukuka Muteba','Nkole Siame','Mwila Chanda','Kabwe Mwape','Nchimunya Zulu'], net:'SpeedPay / Zanaco', color:'#a78bfa'},
+  '098': {names:['Kondwani Mwenya','Tapela Phiri','Monde Chanda','Bwalya Siame','Chanda Lungu'], net:'ZedWallet (ZedMobile)', color:'#22c55e'},
 };
 
 function getPrefix(phone){
-  var clean = phone.replace(/\s/g,'').replace('+260','0').replace('260','0');
-  return clean.substring(0,3);
-}
-
-function getRandomName(prefix){
-  var names = nameDB[prefix] || nameDB['097'];
-  return names[Math.floor(Math.random()*names.length)];
+  return phone.replace(/\s/g,'').replace(/^\+260/,'0').replace(/^260/,'0').substring(0,3);
 }
 
 function getInitials(name){
   return name.split(' ').map(function(n){return n[0]}).join('').substring(0,2).toUpperCase();
 }
 
-function fromNet(id){
-  document.querySelectorAll('[id^="f-"]').forEach(function(b){b.classList.remove('selected')});
-  document.getElementById('f-'+id).classList.add('selected');
-  fNet=id; update();
-}
-
-function toNet(id){
-  document.querySelectorAll('[id^="t-"]').forEach(function(b){b.classList.remove('selected')});
-  document.getElementById('t-'+id).classList.add('selected');
-  tNet=id;
-  recipientVerified=false;
-  recipientName='';
-  document.getElementById('recipient-card').classList.remove('show');
-  document.getElementById('error-msg').style.display='none';
-  update();
-}
-
 function onPhoneInput(){
   var phone = document.getElementById('to-phone').value.trim();
-  var btn = document.getElementById('verify-btn');
-  recipientVerified=false;
-  recipientName='';
+  recipientVerified = false;
+  recipientName = '';
+  recipientNetwork = '';
   document.getElementById('recipient-card').classList.remove('show');
-  document.getElementById('error-msg').style.display='none';
-  btn.disabled = !(phone.length >= 9 && tNet);
+  document.getElementById('loading').classList.remove('show');
   update();
+
+  clearTimeout(lookupTimer);
+
+  var clean = phone.replace(/\s/g,'').replace(/^\+260/,'0').replace(/^260/,'0');
+  if(clean.length >= 10){
+    document.getElementById('loading').classList.add('show');
+    lookupTimer = setTimeout(function(){
+      lookupRecipient(phone);
+    }, 1000);
+  }
 }
 
-function verifyRecipient(){
-  var phone = document.getElementById('to-phone').value.trim();
-  if(!phone || !tNet){return;}
+function lookupRecipient(phone){
+  var prefix = getPrefix(phone);
+  var data = nameDB[prefix];
 
-  document.getElementById('loading-card').classList.add('show');
-  document.getElementById('recipient-card').classList.remove('show');
-  document.getElementById('error-msg').style.display='none';
-  document.getElementById('verify-btn').disabled=true;
+  document.getElementById('loading').classList.remove('show');
 
-  setTimeout(function(){
-    document.getElementById('loading-card').classList.remove('show');
-
-    var prefix = getPrefix(phone);
-    var name = getRandomName(prefix);
-
+  if(data){
+    var name = data.names[Math.floor(Math.random()*data.names.length)];
     recipientName = name;
+    recipientNetwork = data.net;
     recipientVerified = true;
 
-    var initials = getInitials(name);
-    document.getElementById('recipient-avatar').textContent = initials;
-    document.getElementById('recipient-name').textContent = name;
-    document.getElementById('recipient-phone').textContent = phone;
-    document.getElementById('recipient-network').textContent = netNames[tNet] + ' Mobile Money';
+    document.getElementById('avatar').textContent = getInitials(name);
+    document.getElementById('rname').textContent = name;
+    document.getElementById('rphone').textContent = phone;
+    document.getElementById('rnetwork').textContent = data.net;
+    document.getElementById('rnetwork').style.color = data.color;
     document.getElementById('recipient-card').classList.add('show');
-    document.getElementById('verify-btn').disabled=false;
-    update();
-  }, 1500);
+  }
+  update();
 }
 
 function update(){
-  var amt=parseFloat(document.getElementById('amount').value)||0;
-  var fp=document.getElementById('from-phone').value.trim();
-  var tp=document.getElementById('to-phone').value.trim();
-  var btn=document.getElementById('send-btn');
-  var sum=document.getElementById('summary-section');
+  var amt = parseFloat(document.getElementById('amount').value)||0;
+  var btn = document.getElementById('send-btn');
+  var sum = document.getElementById('summary');
 
-  if(amt>0 && fNet && tNet && fp && tp && recipientVerified){
-    var fee=(amt*0.01).toFixed(2);
-    var recv=(amt-parseFloat(fee)).toFixed(2);
-    document.getElementById('s-send').textContent='ZMW '+amt.toFixed(2);
-    document.getElementById('s-fee').textContent='ZMW '+fee;
-    document.getElementById('s-recv').textContent='ZMW '+recv;
-    sum.style.display='block';
-    btn.disabled=false;
-    btn.textContent='Send ZMW '+amt.toFixed(2)+' to '+recipientName.split(' ')[0];
+  if(amt > 0 && recipientVerified){
+    var fee = (amt*0.01).toFixed(2);
+    var recv = (amt - parseFloat(fee)).toFixed(2);
+    document.getElementById('s-send').textContent = 'ZMW '+amt.toFixed(2);
+    document.getElementById('s-fee').textContent = 'ZMW '+fee;
+    document.getElementById('s-recv').textContent = 'ZMW '+recv;
+    sum.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send ZMW '+amt.toFixed(2)+' to '+recipientName.split(' ')[0];
   } else {
-    sum.style.display='none';
-    btn.disabled=true;
-    if(!recipientVerified && tp.length>8){
-      btn.textContent='Tap Verify to confirm recipient';
-    } else {
-      btn.textContent='Enter Details to Continue';
-    }
+    sum.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Enter Details to Continue';
   }
 }
 
 function send(){
-  var amt=parseFloat(document.getElementById('amount').value);
-  var fp=document.getElementById('from-phone').value.trim();
-  var tp=document.getElementById('to-phone').value.trim();
+  var amt = parseFloat(document.getElementById('amount').value);
+  var phone = document.getElementById('to-phone').value.trim();
   document.getElementById('send-screen').style.display='none';
   document.getElementById('proc-screen').classList.remove('hidden');
   setTimeout(function(){
-    var ref='INP-'+Date.now().toString().slice(-8);
+    var ref = 'INP-'+Date.now().toString().slice(-8);
     document.getElementById('proc-screen').classList.add('hidden');
     document.getElementById('ok-screen').classList.remove('hidden');
-    document.getElementById('ok-amount').textContent='ZMW '+amt.toFixed(2);
-    document.getElementById('ok-ref').textContent='REF: '+ref;
-    document.getElementById('ok-from').textContent=fp+' ('+netNames[fNet]+')';
-    document.getElementById('ok-to').textContent=tp+' ('+netNames[tNet]+')';
-    document.getElementById('ok-name').textContent=recipientName;
-    document.getElementById('ok-net').textContent=netNames[fNet]+' → '+netNames[tNet];
-    document.getElementById('ok-date').textContent=new Date().toLocaleString();
+    document.getElementById('ok-amount').textContent = 'ZMW '+amt.toFixed(2);
+    document.getElementById('ok-ref').textContent = 'REF: '+ref;
+    document.getElementById('ok-name').textContent = recipientName;
+    document.getElementById('ok-phone').textContent = phone;
+    document.getElementById('ok-net').textContent = recipientNetwork;
+    document.getElementById('ok-date').textContent = new Date().toLocaleString();
   },3000);
 }
 </script>
