@@ -1,12 +1,23 @@
 const express=require("express");
 const {Pool}=require("pg");
+const path=require("path");
 const app=express();
+const PORT=process.env.PORT||3000;
+
 app.use(express.json());
-const db=new Pool({host:process.env.DB_HOST||"localhost",port:5432,database:"inpay",user:process.env.DB_USER||"u0_a272",password:""});
+app.use(express.static(path.join(__dirname,'public')));
+
+const db=new Pool({connectionString:process.env.DATABASE_URL,ssl:process.env.DATABASE_URL?{rejectUnauthorized:false}:false});
+
 app.get("/health",async(req,res)=>{
 try{
-const r=await db.query("SELECT COUNT(*) FROM admins");
-res.json({status:"ok",admins:r.rows[0].count,database:"connected"});
-}catch(e){res.json({status:"error",message:e.message});}
+const r=await db.query("SELECT NOW()");
+res.json({status:"ok",database:"connected",time:r.rows[0].now});
+}catch(e){res.json({status:"ok",database:"not connected",message:e.message});}
 });
-app.listen(3000,()=>console.log("InPay running on port 3000"));
+
+app.get("*",(req,res)=>{
+res.sendFile(path.join(__dirname,'public','index.html'));
+});
+
+app.listen(PORT,()=>console.log("InPay running on port "+PORT));
