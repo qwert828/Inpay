@@ -23,7 +23,6 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 .section{background:#0f1520;border:1px solid #1a2235;border-radius:12px;padding:20px;margin-bottom:24px}
 .section-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
 .btn{background:#00d9a3;color:#060910;padding:8px 16px;border-radius:8px;font-weight:700;font-size:13px;border:none;cursor:pointer}
-.btn-red{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
 .btn-sm{padding:6px 10px;font-size:11px}
 .table{width:100%;border-collapse:collapse}
 .table th{font-size:11px;color:#5a6a85;text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px solid #1a2235}
@@ -32,18 +31,12 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 .badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700}
 .badge-success{background:rgba(0,217,163,.1);color:#00d9a3}
 .badge-pending{background:rgba(245,158,11,.1);color:#f59e0b}
-.badge-failed{background:rgba(239,68,68,.1);color:#ef4444}
 .badge-active{background:rgba(0,217,163,.1);color:#00d9a3}
-.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid #1a2235;padding-bottom:0}
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid #1a2235}
 .tab{padding:8px 16px;font-size:13px;color:#5a6a85;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab.active{color:#00d9a3;border-bottom-color:#00d9a3}
 .tab-content{display:none}
 .tab-content.active{display:block}
-.alert-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#060910;border-radius:8px;margin-bottom:8px;border-left:3px solid #f59e0b}
-.alert-item.high{border-left-color:#ef4444}
-.alert-title{font-size:13px;font-weight:600}
-.alert-sub{font-size:11px;color:#5a6a85;margin-top:2px}
-.alert-amount{font-size:13px;font-weight:700;color:#f59e0b}
 .metric-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(26,34,53,.5)}
 .metric-row:last-child{border-bottom:none}
 .metric-label{font-size:13px;color:#5a6a85}
@@ -86,7 +79,7 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 <div class="stats-grid">
 <div class="stat-card">
 <div class="label">Total Merchants</div>
-<div class="value" id="stat-merchants">1</div>
+<div class="value">1</div>
 <div class="sub">Registered on InPay</div>
 </div>
 <div class="stat-card">
@@ -108,10 +101,10 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 
 <div class="section">
 <div class="tabs">
-<div class="tab active" onclick="showTab('merchants')">Merchants</div>
-<div class="tab" onclick="showTab('transactions')">Transactions</div>
-<div class="tab" onclick="showTab('aml')">AML Alerts</div>
-<div class="tab" onclick="showTab('system')">System</div>
+<div class="tab active" onclick="showTab('merchants',event)">Merchants</div>
+<div class="tab" onclick="showTab('transactions',event)">Transactions</div>
+<div class="tab" onclick="showTab('aml',event)">AML Alerts</div>
+<div class="tab" onclick="showTab('system',event)">System</div>
 </div>
 
 <div class="tab-content active" id="tab-merchants">
@@ -129,7 +122,7 @@ Registered Merchants
 <th>Joined</th>
 <th>Action</th>
 </tr></thead>
-<tbody id="merchant-table">
+<tbody>
 <tr>
 <td>InPay Demo Merchant</td>
 <td>demo@inpay.zm</td>
@@ -164,8 +157,8 @@ No AML alerts. The system is monitoring all transactions automatically.
 <div class="section-title" style="margin-bottom:12px">System Health</div>
 <div class="metric-row"><span class="metric-label">API Server</span><span class="metric-value" style="color:#00d9a3">Online</span></div>
 <div class="metric-row"><span class="metric-label">Database</span><span class="metric-value" style="color:#00d9a3">Connected</span></div>
-<div class="metric-row"><span class="metric-label">Railway Region</span><span class="metric-value">Europe West 4</span></div>
-<div class="metric-row"><span class="metric-label">Node Version</span><span class="metric-value">v22.x</span></div>
+<div class="metric-row"><span class="metric-label">Hosting</span><span class="metric-value">Render — Frankfurt</span></div>
+<div class="metric-row"><span class="metric-label">Node Version</span><span class="metric-value">v24.x</span></div>
 <div class="metric-row"><span class="metric-label">BOZ PSP License</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
 <div class="metric-row"><span class="metric-label">MTN API</span><span class="metric-value" style="color:#f59e0b">Sandbox Only</span></div>
 <div class="metric-row"><span class="metric-label">Airtel API</span><span class="metric-value" style="color:#f59e0b">Pending</span></div>
@@ -179,27 +172,35 @@ No AML alerts. The system is monitoring all transactions automatically.
 </div>
 
 <script>
+var attempts = 0;
+
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
 function login(){
+if(attempts >= 5){
+document.getElementById('login-error').textContent = 'Too many attempts. Close and reopen the page.';
+document.getElementById('login-error').style.display = 'block';
+return;
+}
+var email = document.getElementById('login-email').value.trim();
+var pass = document.getElementById('login-pass').value.trim();
+if(email === 'admin@inpay.zm' && pass === 'InP@y#Zm2026!'){
+attempts = 0;
+document.getElementById('login-screen').style.display = 'none';
+document.getElementById('dashboard-screen').style.display = 'block';
+} else {
 attempts++;
-document.getElementById('login-error').textContent='Invalid credentials. Attempt '+attempts+' of 5.';
-document.getElementById('login-error').style.display='block';
-  
-  
-document.getElementById('login-screen').style.display='none';
-document.getElementById('dashboard-screen').style.display='block';
-}else{
-document.getElementById('login-error').style.display='block';
+document.getElementById('login-error').textContent = 'Invalid credentials. Attempt ' + attempts + ' of 5.';
+document.getElementById('login-error').style.display = 'block';
 }
 }
 
 function logout(){
-document.getElementById('login-screen').style.display='block';
-document.getElementById('dashboard-screen').style.display='none';
+document.getElementById('login-screen').style.display = 'block';
+document.getElementById('dashboard-screen').style.display = 'none';
 }
 
-function showTab(name){
+function showTab(name, event){
 document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
 document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
 document.getElementById('tab-'+name).classList.add('active');
