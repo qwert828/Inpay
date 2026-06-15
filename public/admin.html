@@ -182,9 +182,10 @@ No AML alerts. The system is monitoring all transactions automatically.
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
 function login(){
-var email=document.getElementById('login-email').value.trim();
-var pass=document.getElementById('login-pass').value.trim();
-if(email==='admin@inpay.zm' && pass==='inpay2026'){
+attempts++;
+document.getElementById('login-error').textContent='Invalid credentials. Attempt '+attempts+' of 5.';
+document.getElementById('login-error').style.display='block';
+  
   
 document.getElementById('login-screen').style.display='none';
 document.getElementById('dashboard-screen').style.display='block';
