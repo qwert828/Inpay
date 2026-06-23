@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#00d9a3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="InPay">
 <title>InPay - Zambia Payment Rail</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -141,3 +145,4 @@ aaronmtamiraphiri1@gmail.com · +260 974 558 313
 </body>
   </html>
 
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").then(()=>console.log("InPay PWA ready")).catch(e=>console.log(e));}</script>
