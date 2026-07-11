@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>InTap - Get Tipped Instantly</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;text-align:center;padding:24px;min-height:100vh}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1a2235;margin-bottom:40px;max-width:900px;margin-left:auto;margin-right:auto}
+.logo{font-size:20px;font-weight:800;color:#ffb800;text-decoration:none}
+.navlinks a{color:#5a6a85;text-decoration:none;font-size:13px;margin-left:16px}
+.navlinks a:hover{color:#ffb800}
+.tag{background:rgba(255,184,0,.1);border:1px solid rgba(255,184,0,.2);color:#ffb800;padding:6px 16px;border-radius:20px;font-size:12px;display:inline-block;margin-bottom:16px;margin-top:8px}
+h1{font-size:52px;color:#ffb800;margin-bottom:8px;font-weight:800}
+h2{font-size:22px;color:#e8edf5;margin:8px 0 16px}
+p{color:#5a6a85;max-width:480px;line-height:1.7;margin:0 auto 24px;font-size:15px}
+.btn{background:#ffb800;color:#060910;padding:14px 32px;border-radius:10px;text-decoration:none;font-weight:700;margin:6px;display:inline-block;font-size:15px}
+.btn2{background:transparent;color:#ffb800;border:1px solid rgba(255,184,0,.3);color:#ffb800}
+.grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:32px auto;max-width:680px}
+.card{padding:16px 18px;background:#0f1520;border:1px solid #1a2235;border-radius:12px;font-size:13px;text-align:left;min-width:150px;flex:1}
+.card .icon{font-size:24px;margin-bottom:8px}
+.card .name{font-weight:700;color:#e8edf5;font-size:14px}
+.card .desc{color:#5a6a85;font-size:12px;margin-top:4px}
+.divider{height:1px;background:#1a2235;margin:40px auto;max-width:600px}
+.steps{display:flex;flex-direction:column;gap:12px;max-width:420px;margin:0 auto 32px;text-align:left}
+.step{display:flex;gap:14px;align-items:flex-start;background:#0f1520;border:1px solid #1a2235;border-radius:10px;padding:14px}
+.step-num{background:#ffb800;color:#060910;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.step-text{font-size:13px;color:#5a6a85;line-height:1.6}
+.step-text b{color:#e8edf5}
+.stat-row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:32px auto}
+.stat{background:#0f1520;border:1px solid #1a2235;border-radius:12px;padding:20px 28px;min-width:120px}
+.stat .n{font-size:28px;font-weight:800;color:#ffb800}
+.stat .l{font-size:12px;color:#5a6a85;margin-top:4px}
+.networks{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+.net{padding:8px 16px;background:#0f1520;border:1px solid #1a2235;border-radius:50px;font-size:12px;font-weight:700}
+.footer{margin-top:60px;padding-top:24px;border-top:1px solid #1a2235;font-size:12px;color:#5a6a85;padding-bottom:40px}
+.footer a{color:#5a6a85;text-decoration:none;margin:0 8px}
+.footer a:hover{color:#ffb800}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="/intap.html" class="logo">InTap</a>
+<div class="navlinks">
+<a href="/">InPay</a>
+<a href="/intap-signup.html">Get My Tap Code</a>
+</div>
+</nav>
+
+<div class="tag">Powered by InPay · Live in Zambia</div>
+<h1>InTap</h1>
+<p>Get tipped or paid instantly — no cash, no coins, no waiting. Just share your Tap Code and money lands in your mobile money account in seconds.</p>
+
+<a href="/intap-signup.html" class="btn">Get My Free Tap Code</a>
+<a href="/" class="btn btn2">What is InPay?</a>
+
+<div class="stat-row">
+<div class="stat"><div class="n">5</div><div class="l">Networks supported</div></div>
+<div class="stat"><div class="n">&lt;3s</div><div class="l">Payment speed</div></div>
+<div class="stat"><div class="n">K0</div><div class="l">Cost to sign up</div></div>
+<div class="stat"><div class="n">1%</div><div class="l">Fee per tip</div></div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Who Is InTap For?</h2>
+<div class="grid">
+<div class="card"><div class="icon">🛡️</div><div class="name">Car Guards</div><div class="desc">Display your code on your badge or jacket</div></div>
+<div class="card"><div class="icon">🍽️</div><div class="name">Waiters</div><div class="desc">Place your code on the bill or table</div></div>
+<div class="card"><div class="icon">🛵</div><div class="name">Delivery Riders</div><div class="desc">Get paid the moment you deliver</div></div>
+<div class="card"><div class="icon">🧺</div><div class="name">Market Vendors</div><div class="desc">One QR for every customer</div></div>
+<div class="card"><div class="icon">🚕</div><div class="name">Taxi Drivers</div><div class="desc">Accept tips after every ride</div></div>
+<div class="card"><div class="icon">💇</div><div class="name">Barbers and Salons</div><div class="desc">Let clients tip digitally</div></div>
+</div>
+
+<div class="divider"></div>
+
+<h2>How InTap Works</h2>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-text"><b>Sign up free</b> — enter your name, phone number and mobile money network. Takes 2 minutes.</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-text"><b>Get your Tap Code</b> — a unique QR code linked to your mobile money account.</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-text"><b>Share your code</b> — print it, stick it on your badge, jacket, stall or car window.</div>
+</div>
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-text"><b>Customer scans and pays</b> — using MTN, Airtel, Zamtel, SpeedPay or ZedMobile.</div>
+</div>
+<div class="step">
+<div class="step-num">5</div>
+<div class="step-text"><b>Money lands instantly</b> — straight to your registered mobile money account.</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<h2>Works With All 5 Networks</h2>
+<p>Your customers can pay using any Zambian mobile money — you receive everything in one place.</p>
+<div class="networks">
+<div class="net" style="color:#ffcb00">MTN Mobile Money</div>
+<div class="net" style="color:#ff6b6b">Airtel Money</div>
+<div class="net" style="color:#00d4ff">Zamtel Kwacha</div>
+<div class="net" style="color:#a78bfa">SpeedPay / Zanaco</div>
+<div class="net" style="color:#22c55e">ZedWallet (ZedMobile)</div>
+</div>
+
+<a href="/intap-signup.html" class="btn">Get My Free Tap Code</a>
+
+<div class="footer">
+<a href="/">InPay Home</a>
+<a href="/intap-signup.html">Sign Up</a>
+<a href="/about.html">About</a>
+<a href="/pricing.html">Pricing</a>
+<br><br>
+2026 InPay Limited · InTap is a product of InPay Zambia Limited<br>
+Plot No. 9 Kapumpe Street, Woodlands, Lusaka · +260 974 558 313
+</div>
+
+</body>
+</html>
