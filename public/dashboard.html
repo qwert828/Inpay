@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Merchant Dashboard - InPay</title>
+<title>Merchant Dashboard - EzzyPay</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:100vh}
@@ -52,7 +52,7 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 <body>
 
 <div class="nav">
-<a href="/" class="logo">InPay</a>
+<a href="/" class="logo">EzzyPay</a>
 <div class="nav-right">
 <span class="merchant-name" id="merchant-name">My Business</span>
 <a href="/" class="logout">Sign Out</a>
@@ -63,7 +63,7 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 
 <div class="welcome">
 <h1>Welcome back, <span id="welcome-name">Merchant</span></h1>
-<p>Here is your InPay dashboard for today</p>
+<p>Here is your EzzyPay dashboard for today</p>
 </div>
 
 <div class="stats-grid">
@@ -80,7 +80,7 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 <div class="stat-card">
 <div class="label">Total Transactions</div>
 <div class="value" id="total-tx">0</div>
-<div class="change">Since joining InPay</div>
+<div class="change">Since joining EzzyPay</div>
 </div>
 <div class="stat-card">
 <div class="label">Success Rate</div>
@@ -91,13 +91,13 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 
 <div class="section">
 <div class="section-title">
-Your InPay QR Code
+Your EzzyPay QR Code
 <button class="btn btn-sm" onclick="downloadQR()">Download QR</button>
 </div>
 <div class="qr-box">
 <div class="qr-placeholder">📱</div>
 <p style="color:#5a6a85;font-size:13px;margin-bottom:12px">Your merchants QR code will appear here once your account is approved. Share it with customers to accept payments from all 5 networks.</p>
-<div class="qr-url" id="qr-url">pay.inpay.zm/q/pending-approval</div>
+<div class="qr-url" id="qr-url">pay.ezzypay.zm/q/pending-approval</div>
 </div>
 <p style="font-size:12px;color:#5a6a85">Customers scan this QR with any mobile money app to pay you instantly.</p>
 </div>
@@ -123,7 +123,7 @@ No transactions yet. Share your QR code to start accepting payments.
 
 <div class="section">
 <div class="section-title">Your API Key</div>
-<div class="api-key-box" id="api-key">inpay_sandbox_••••••••••••••••••••••••••••••</div>
+<div class="api-key-box" id="api-key">ezzypay_sandbox_••••••••••••••••••••••••••••••</div>
 <div style="display:flex;gap:8px">
 <button class="copy-btn" onclick="copyKey()">Copy API Key</button>
 <a href="/docs.html" class="copy-btn" style="text-decoration:none">View API Docs</a>
@@ -156,16 +156,16 @@ No transactions yet. Share your QR code to start accepting payments.
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const name = params.get('name') || localStorage.getItem('inpay_merchant_name') || 'Merchant';
-const key = params.get('key') || localStorage.getItem('inpay_api_key') || 'inpay_sandbox_demo';
+const name = params.get('name') || localStorage.getItem('ezzypay_merchant_name') || 'Merchant';
+const key = params.get('key') || localStorage.getItem('ezzypay_api_key') || 'ezzypay_sandbox_demo';
 
 document.getElementById('merchant-name').textContent = name;
 document.getElementById('welcome-name').textContent = name;
 document.getElementById('api-key').textContent = key;
-document.getElementById('qr-url').textContent = 'pay.inpay.zm/q/' + key.slice(-8);
+document.getElementById('qr-url').textContent = 'pay.ezzypay.zm/q/' + key.slice(-8);
 
-if(params.get('name')) localStorage.setItem('inpay_merchant_name', params.get('name'));
-if(params.get('key')) localStorage.setItem('inpay_api_key', params.get('key'));
+if(params.get('name')) localStorage.setItem('ezzypay_merchant_name', params.get('name'));
+if(params.get('key')) localStorage.setItem('ezzypay_api_key', params.get('key'));
 
 function copyKey(){
 navigator.clipboard.writeText(document.getElementById('api-key').textContent);

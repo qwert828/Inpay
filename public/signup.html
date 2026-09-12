@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Sign Up - InPay</title>
+<title>Sign Up - EzzyPay</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
@@ -43,8 +43,8 @@ select option{background:#0f1520}
 <body>
 <div class="card">
 
-<a href="/" class="back">← Back to InPay</a>
-<div class="logo">InPay</div>
+<a href="/" class="back">← Back to EzzyPay</a>
+<div class="logo">EzzyPay</div>
 <div class="sub">Zambia Unified Payment Rail</div>
 
 <div class="steps-bar">
@@ -61,10 +61,10 @@ select option{background:#0f1520}
 <div class="badge">Beta Access</div>
 </div>
 <h2>Enter Access Code</h2>
-<p style="color:#5a6a85;font-size:13px;text-align:center;margin-bottom:20px;line-height:1.6">InPay is currently in beta. Enter your access code to create a merchant account.</p>
+<p style="color:#5a6a85;font-size:13px;text-align:center;margin-bottom:20px;line-height:1.6">EzzyPay is currently in beta. Enter your access code to create a merchant account.</p>
 <div class="field">
 <label>Access Code</label>
-<input type="text" id="access-code" placeholder="Enter your InPay access code" style="text-align:center;font-size:18px;letter-spacing:4px;text-transform:uppercase">
+<input type="text" id="access-code" placeholder="Enter your EzzyPay access code" style="text-align:center;font-size:18px;letter-spacing:4px;text-transform:uppercase">
 </div>
 <button class="btn" onclick="checkCode()">Verify Code</button>
 <div class="link" style="margin-top:16px">Don't have a code? <a href="mailto:aaronmtamiraphiri1@gmail.com">Request access</a></div>
@@ -102,7 +102,7 @@ select option{background:#0f1520}
 <div class="step" id="step3">
 <div class="success-box" style="display:block">
 <div style="font-size:56px;margin-bottom:16px">🎉</div>
-<h3>Welcome to InPay!</h3>
+<h3>Welcome to EzzyPay!</h3>
 <p>Your merchant account is ready. Save your sandbox API key — it will not be shown again.</p>
 <div class="key" id="api-key-display"></div>
 <p style="font-size:12px;color:#5a6a85;margin-bottom:20px">Your live key will be issued after KYB verification. BOZ license pending.</p>
@@ -154,10 +154,10 @@ var pr=document.getElementById('pr').value;
 var bt=document.getElementById('bt').value;
 if(!b||!e||!p||!pr||!bt){showError('Please fill in all fields');return;}
 merchantName = b;
-apiKey = 'inpay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
+apiKey = 'ezzypay_sandbox_'+Array.from(crypto.getRandomValues(new Uint8Array(20))).map(function(x){return x.toString(16).padStart(2,'0')}).join('');
 document.getElementById('api-key-display').textContent = apiKey;
-localStorage.setItem('inpay_merchant_name', b);
-localStorage.setItem('inpay_api_key', apiKey);
+localStorage.setItem('ezzypay_merchant_name', b);
+localStorage.setItem('ezzypay_api_key', apiKey);
 setStep(3);
 }
 

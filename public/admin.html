@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Admin - InPay</title>
+<title>Admin - EzzyPay</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:100vh}
@@ -54,9 +54,9 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 
 <div id="login-screen">
 <div class="login-card">
-<div style="font-size:28px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:8px">InPay</div>
+<div style="font-size:28px;font-weight:800;color:#00d9a3;text-align:center;margin-bottom:8px">EzzyPay</div>
 <div style="color:#5a6a85;font-size:14px;text-align:center;margin-bottom:32px">Admin Portal</div>
-<div class="field"><label>Email</label><input type="email" id="login-email" placeholder="admin@inpay.zm"></div>
+<div class="field"><label>Email</label><input type="email" id="login-email" placeholder="admin@ezzypay.zm"></div>
 <div class="field"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••"></div>
 <button class="btn-full" onclick="login()">Sign In</button>
 <div class="error" id="login-error">Invalid email or password</div>
@@ -65,7 +65,7 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 
 <div id="dashboard-screen" style="display:none">
 <div class="nav">
-<div class="logo">InPay Admin</div>
+<div class="logo">EzzyPay Admin</div>
 <div class="nav-right">
 <span class="admin-badge">SUPERADMIN</span>
 <a href="#" class="logout" onclick="logout()">Sign Out</a>
@@ -74,13 +74,13 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 
 <div class="container">
 <div class="page-title">Admin Dashboard</div>
-<div class="page-sub">InPay platform overview — <span id="current-date"></span></div>
+<div class="page-sub">EzzyPay platform overview — <span id="current-date"></span></div>
 
 <div class="stats-grid">
 <div class="stat-card">
 <div class="label">Total Merchants</div>
 <div class="value">1</div>
-<div class="sub">Registered on InPay</div>
+<div class="sub">Registered on EzzyPay</div>
 </div>
 <div class="stat-card">
 <div class="label">Total Transactions</div>
@@ -93,7 +93,7 @@ body{background:#060910;color:#e8edf5;font-family:Arial,sans-serif;min-height:10
 <div class="sub">All time GMV</div>
 </div>
 <div class="stat-card">
-<div class="label">InPay Revenue</div>
+<div class="label">EzzyPay Revenue</div>
 <div class="value">ZMW 0</div>
 <div class="sub">Fees collected</div>
 </div>
@@ -124,8 +124,8 @@ Registered Merchants
 </tr></thead>
 <tbody>
 <tr>
-<td>InPay Demo Merchant</td>
-<td>demo@inpay.zm</td>
+<td>EzzyPay Demo Merchant</td>
+<td>demo@ezzypay.zm</td>
 <td>Lusaka</td>
 <td>Retail Shop</td>
 <td><span class="badge badge-active">Active</span></td>
@@ -184,7 +184,7 @@ return;
 }
 var email = document.getElementById('login-email').value.trim();
 var pass = document.getElementById('login-pass').value.trim();
-if(email === 'admin@inpay.zm' && pass === 'InP@y#Zm2026!'){
+if(email === 'admin@ezzypay.zm' && pass === 'InP@y#Zm2026!'){
 attempts = 0;
 document.getElementById('login-screen').style.display = 'none';
 document.getElementById('dashboard-screen').style.display = 'block';
