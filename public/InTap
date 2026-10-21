@@ -44,17 +44,17 @@ p{color:#5a6a85;max-width:480px;line-height:1.7;margin:0 auto 24px;font-size:15p
 <nav>
 <a href="/intap.html" class="logo">InTap</a>
 <div class="navlinks">
-<a href="/">InPay</a>
+<a href="/">EzzyPay</a>
 <a href="/intap-signup.html">Get My Tap Code</a>
 </div>
 </nav>
 
-<div class="tag">Powered by InPay · Live in Zambia</div>
+<div class="tag">Powered by EzzyPay · Live in Zambia</div>
 <h1>InTap</h1>
 <p>Get tipped or paid instantly — no cash, no coins, no waiting. Just share your Tap Code and money lands in your mobile money account in seconds.</p>
 
 <a href="/intap-signup.html" class="btn">Get My Free Tap Code</a>
-<a href="/" class="btn btn2">What is InPay?</a>
+<a href="/" class="btn btn2">What is EzzyPay?</a>
 
 <div class="stat-row">
 <div class="stat"><div class="n">5</div><div class="l">Networks supported</div></div>
@@ -116,12 +116,12 @@ p{color:#5a6a85;max-width:480px;line-height:1.7;margin:0 auto 24px;font-size:15p
 <a href="/intap-signup.html" class="btn">Get My Free Tap Code</a>
 
 <div class="footer">
-<a href="/">InPay Home</a>
+<a href="/">EzzyPay Home</a>
 <a href="/intap-signup.html">Sign Up</a>
 <a href="/about.html">About</a>
 <a href="/pricing.html">Pricing</a>
 <br><br>
-2026 InPay Limited · InTap is a product of InPay Zambia Limited<br>
+2026 EzzyPay Limited · InTap is a product of EzzyPay Zambia Limited<br>
 Plot No. 9 Kapumpe Street, Woodlands, Lusaka · +260 974 558 313
 </div>
 

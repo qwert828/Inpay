@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.post('/api/admin/login',authLimiter,(req,res)=>{
 const email=req.body.email||'';
 const password=req.body.password||'';
-if(email==='admin@inpay.zm' && password===ADMIN_PASSWORD){
-res.json({success:true,token:'inpay-admin-'+Date.now()});
+if(email==='admin@ezzypay.zm' && password===ADMIN_PASSWORD){
+res.json({success:true,token:'ezzypay-admin-'+Date.now()});
 }else{
 res.status(401).json({success:false,message:'Invalid credentials'});
 }
@@ -49,7 +49,7 @@ return res.status(403).json({success:false,message:'Invalid access code'});
 if(!businessName||!email||!phone||!province||!businessType){
 return res.status(400).json({success:false,message:'All fields required'});
 }
-const apiKey='inpay_sandbox_'+crypto.randomBytes(20).toString('hex');
+const apiKey='ezzypay_sandbox_'+crypto.randomBytes(20).toString('hex');
 res.json({success:true,apiKey:apiKey,merchantName:businessName});
 });
 
@@ -57,5 +57,5 @@ app.get('/*splat',(req,res)=>{
 res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
-app.listen(PORT,()=>console.log('InPay running on port '+PORT));
+app.listen(PORT,()=>console.log('EzzyPay running on port '+PORT));
 
